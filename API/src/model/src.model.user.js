@@ -40,4 +40,5 @@ userSchema.statics.encryptPassword = async function(password){
 
 var User = mongoose.model('user', userSchema);
 
+module.exports.userSchema = userSchema;
 module.exports.User = User;
