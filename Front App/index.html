@@ -242,7 +242,7 @@
 
 
     <!-- Login Model -->
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div ng-controller="userController as userCtrl" class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content" style="background: url('./asset/images/back9.jpg') ">
                 <div class="modal-header text-center">
@@ -252,7 +252,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
+                    <form ng-submit="login()">
                         <label for="email">E-mail :</label>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
@@ -260,7 +260,7 @@
                                     <i class="fas fa-at"></i>
                                 </span>
                             </div>
-                            <input type="email" required="true" class="form-control" name="" id="_email" aria-describedby="emailHelpId" placeholder="E-mail">
+                            <input type="email" required="true" class="form-control" ng-model="user.email" id="_email" aria-describedby="emailHelpId" placeholder="E-mail">
                         </div>
                         <label for="email">Password :</label>
                         <div class="input-group form-group">
@@ -269,9 +269,9 @@
                                     <i class="fas fa-lock"></i>
                                 </span>
                             </div>
-                            <input type="password" required="true" class="form-control" name="password" id="_password" placeholder="Password">
+                            <input type="password" required="true" class="form-control" ng-model="user.password" id="_password" placeholder="Password">
                         </div>
-                        <button type="submit" class="btn btn-s my-2 my-sm-0">Submit</button>
+                        <input type="submit" class="btn btn-s my-2 my-sm-0" value="Login" />
                     </form>
                 </div>
                 <div class="modal-footer">

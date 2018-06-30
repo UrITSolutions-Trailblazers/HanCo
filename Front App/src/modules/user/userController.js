@@ -4,10 +4,10 @@ app.controller('userController', ['$scope', '$rootScope', '$cookies', '$http', '
         $scope.user = {};
 
         $scope.register = function () {
-
             // console.log($scope.user)
             $http.post(REST_URI + '/user', $scope.user).then(
                 (res) => {
+                    $('#registerModal').modal('toggle');
                     $scope.user = {};
                 },
                 (err) => {
@@ -18,9 +18,23 @@ app.controller('userController', ['$scope', '$rootScope', '$cookies', '$http', '
                     } else {
                         $scope.user = {};
                         alert('Oops something went wrong. Please try again')
+                        $('#registerModal').modal('toggle');
                     }
-                })
+                }
+            )
+        }
 
+        $scope.login = function () {
+
+            $http.post(REST_URI + '/user/login', $scope.user).then(
+                (res) => {
+                    $rootScope.currentUser = res.data.user;
+                    $rootScope.token = res.data.token;
+                },
+                (err) => {
+                    console.error(err);
+                }
+            )
         }
     }
 ]);

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const _ = require('lodash');
+const bcrypt = require('bcrypt');
 
 const jwt = require('jsonwebtoken');
 
@@ -32,13 +33,21 @@ router.post('/login', async (req, res) => {
     var user = {};
     try {
         user = await User.findOne({email: credentials.email});
-        console.log('User found');
-        console.log(user);
+        let result = await bcrypt.compare(credentials.password, user.password);
+        if(!result){
+            return res.status(400).send(new Error('Incorrect password'));
+        }
     } catch (error) {
         return res.status(400).send(error);
     }
-    let token = await jwt.sign(user.firstName,'pinki');
-    res.header('x-auth-token',token).send(user);
+    let token = await jwt.sign(_.pick(user, ['email', '_id']),'pinki');
+    res.send({token: token, user: _.pick(user, ['firstName', 'email', 'phone', '_id'])});
+});
+
+router.get('/test', async (req, res) => {
+    console.log(req.headers);
+
+    res.send("success");
 });
 
 module.exports = router;
