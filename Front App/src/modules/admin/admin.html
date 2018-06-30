@@ -1,0 +1,138 @@
+<center>
+    <div class="card" style="background: url('./asset/images/back9.jpg') ;max-width: 700px;">
+        <div class="card-header">
+            <center>
+                <h3>Supplier Management.</h3>
+            </center>
+        </div>
+        <div class="card-block">
+
+            <form class="form-horizontal m-4" method="POST">
+
+                <div class="form-group row">
+
+                    <label class="control-label col-md-4" style="text-align: center">Supplier : </label>
+                    <div class="col-md-8">
+                        <input type="text" id="supplier_name" class="form-control" placeholder="Supplier Name" />
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                    <label class="control-label col-md-4" style="text-align: center">email : </label>
+                    <div class="col-md-8">
+                        <input type="email" id="supplier_email" class="form-control" placeholder="email" />
+                    </div>
+
+                </div>
+                <div class="form-group row">
+
+                    <label class="control-label col-md-4" style="text-align: center">Address : </label>
+                    <div class="col-md-8">
+                        <textarea id="supplier_address" class="form-control" placeholder="Address!"></textarea>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                    <label class="control-label col-md-4" style="text-align: center">Mobile No. : </label>
+                    <div class="col-md-8">
+                        <input type="text" id="supplier_no" class="form-control" placeholder="Mobile No." />
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                    <label class="control-label col-md-4" style="text-align: center">Licence Number : </label>
+                    <div class="col-md-8">
+                        <input type="text" id="lic_no." class="form-control" placeholder="Licence Number" />
+                    </div>
+
+                </div>
+
+                <div class="mb-4">
+                    <button type="submit" id="supplier_add" class="btn btn-ani">
+                        <strong>Add Supplier</strong>
+                    </button>
+
+                </div>
+        </div>
+    </div>
+</center>
+
+<br>
+<br>
+<br>
+<br>
+
+<div class="row">
+
+    <div class='col-12'>
+        <center>
+            <hr>
+            <h1>List Of Suppliers.</h1>
+            <hr>
+        </center>
+    </div>
+
+
+    <div class='col-xs-12 col-lg-12'>
+
+        <div style="overflow: auto">
+
+            <table id="adminTable" class="table table-condensed table-striped table-bordered table-hover">
+
+                <thead>
+                    <tr>
+                        <th>Suppplier Id</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Pincode</th>
+                        <th>emailID</th>
+                        <th>Mobile No.</th>
+                        <th>Licence Id</th>
+                        <th>Activate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Abc</td>
+                        <td>No.1,Big Street,Ambattur,Chennai</td>
+                        <td>600071</td>
+                        <td>abc@gmail.com</td>
+                        <td>1234567890</td>
+                        <td>h123456</td>
+                        <td>
+                            <span class="switch">
+                                <input checked="checked" type="checkbox" class="in switch" id="switch" style="margin: 0;">
+                                <label class="labe" for="switch">Activate</label>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Suppplier Id</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Pincode</th>
+                        <th>emailID</th>
+                        <th>Mobile No.</th>
+                        <th>Licence Id</th>
+                        <th>Activate</th>
+                    </tr>
+                </tfoot>
+
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+</div>

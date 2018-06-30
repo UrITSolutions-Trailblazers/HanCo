@@ -1,0 +1,277 @@
+a {
+    font-size: 100;
+}
+
+h4,
+input,
+button {
+    font-size: 140%
+}
+
+.navbar {
+    border-bottom: #f26b43 3px solid;
+    opacity: 0.85;
+}
+
+a.btn-ani:hover,a.btn-s:hover {
+    color: #F6DED0;
+}
+
+a.btn-d:hover{
+    color: #000;
+}
+
+body {
+    font-family: 'Acme', sans-serif;
+    background-color: #F6DED0;
+}
+
+/* Buttons styling */
+.btn-ani {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    background-color: #fcad26;
+    font-size: 16px;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 auto;
+    border-radius: 15px;
+    box-shadow: 0 3px #efa424;
+}
+.btn-ani:hover {
+    box-shadow: 0 2px #efa424;
+    top: 1px;
+    opacity: 1;
+}
+.btn-ani:active {
+    box-shadow: none;
+    top: 3px;
+}
+ 
+.modal-content{
+    background-color: #F6DED0;
+}
+
+.icon{
+    margin: 1px;
+    color: #000;
+}
+
+.btn-s{
+outline: none;
+border: none;
+cursor: pointer;
+display: block;
+position: relative;
+background-color: #3dc51bcb;
+font-size: 16px;
+color: rgb(240, 227, 253);
+text-transform: uppercase;
+letter-spacing: 2px;
+margin: 0;
+border-radius: 15px;
+box-shadow: 0 3px #218a0c;
+}
+.btn-s:hover {
+box-shadow: 0 2px #218a0c;
+top: 1px;
+}
+.btn-s:active {
+box-shadow: none;
+top: 3px;
+}
+
+.carousel-caption .btn-ani{
+    width: 80px;
+    height: 24;
+}
+
+.btn-d{
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    background-color: #c51b1bcb;
+    font-size: 16px;
+    color: rgb(6, 22, 19);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    /* margin: 0 auto; */
+    border-radius: 15px;
+    box-shadow: 0 3px #810000;
+    }
+    .btn-d:hover {
+    box-shadow: 0 2px #810000;
+    top: 1px;
+    }
+    .btn-d:active {
+    box-shadow: none;
+    top: 3px;
+    }
+
+input{
+    border-radius: 2%;
+}
+
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+}
+.products{
+    margin: 1%;
+}
+
+.carousel-caption{
+    padding-bottom: 8%;
+    color: #F6DED0;
+}
+
+.carousel-caption h3{
+    font-size: 200%;
+    text-transform: uppercase;
+}
+
+.pro-ani{
+    background: #000000;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+}
+
+div.pro-ani{
+    box-sizing: border-box;
+}
+
+div.pro-ani i.fa-eye {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    font-size: 34px;
+    color: #000000;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    background: #ffffff;
+}
+
+
+div.pro-ani:hover img{
+    opacity: 0.3;
+    filter: grayscale(100%);
+  } 
+  
+  div.pro-ani *{
+    transition: all 0.35s ease-in-out;
+  }
+  
+  div.pro-ani i.fa-eye{
+    transform: translate(-50%,-50%) scale(0);
+    transition: transform 300ms 0ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  }
+  
+  div.pro-ani:hover i.fa-eye{
+    transform: translate(-50%,-50%) scale(1);
+    transition: transform 300ms 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  div.pro-ani.eye i.fa-eye {
+    color: #f26b43;
+  }
+
+  .dropdown{
+      cursor: pointer;
+  }
+
+  .home-menu img{
+      width: 90%;
+      margin: 5%;
+      height: 300px;
+  }
+
+  .product-menu img{
+    width: 90%;
+    margin: 5%;
+    height: 200px;
+}
+
+/* pro-ani eye */
+
+#supplierDataTableImg{
+	height: 75px;
+	width: 75px;
+}
+
+#cartTableImg{
+	height: 150px;
+    width: 150px;
+    
+}
+
+
+.in[type=checkbox]{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+
+.labe {
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 60px;
+	height: 30px;
+	background: grey;
+	display: block;
+	border-radius: 100px;
+	position: relative;
+}
+
+.labe:after {
+	content: '';
+	position: absolute;
+	top: 2.5px;
+	left: 2.5px;
+	width: 25px;
+	height: 25px;
+	background: #fff;
+	border-radius: 90px;
+	transition: 0.3s;
+}
+
+.in:checked + .labe {
+	background: #bada55;
+}
+
+.in:checked + .labe:after {
+	left: calc(100% - 2.5px);
+	transform: translateX(-100%);
+}
+
+.labe:active:after {
+	width: 30px;
+}
+
+.edit{
+    width: 50px;
+    margin-top: 15px;
+    margin-left: 0;
+}
+
+
+.cart-op{
+    width: 40px;
+    height: 36px;
+}
+
+h6{
+    font-size: 25px;
+}
+
+.img-sp{
+    width: 100%;
+    max-height: 315px;
+}

@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
             let result = await User.create(user);
             return res.send(result);
         } catch (error) {
-            return res.status(500).send('Somthing went wrong.');
+            return res.status(500).send(error);
         }
     })
 
@@ -31,7 +31,7 @@ router.post('/login', async (req, res) => {
     console.log(credentials);
     var user = {};
     try {
-        user = await User.findOne({credentials});
+        user = await User.findOne({email: credentials.email});
         console.log('User found');
         console.log(user);
     } catch (error) {

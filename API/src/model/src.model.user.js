@@ -16,7 +16,8 @@ const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        match: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
+        match: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/,
+        unique: true
     },
     password: {
         type: String,
@@ -26,7 +27,8 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         minlength: 10,
-        maxlength: 10
+        maxlength: 10,
+        unique: true
     },
     addresses: {
         type: [addressScema],

@@ -1,0 +1,225 @@
+<center>
+    <div class="card" style="background: url('./asset/images/back7.jpg') ;max-width: 700px;">
+        <div class="card-header">
+            <center>
+                <h3>Product Management.</h3>
+            </center>
+        </div>
+        <div class="card-block">
+
+            <form class="form-horizontal m-4" method="POST">
+
+                <div class="form-group row">
+
+                    <label class="control-label col-md-4" style="text-align: center">Name : </label>
+                    <div class="col-md-8">
+                        <input type="text" id="name" path="name" class="form-control" placeholder="Product Name" />
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                    <label class="control-label col-md-4" style="text-align: center">Brand Name: </label>
+                    <div class="col-md-8">
+                        <input type="text" id="brand" path="brand" class="form-control" placeholder="Brand Name" />
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                    <label class="control-label col-md-4" style="text-align: center">Description : </label>
+                    <div class="col-md-8">
+                        <textarea path="description" id="description" class="form-control" placeholder="Write some description!"></textarea>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                    <label class="control-label col-md-4" style="text-align: center">Unit Price : </label>
+                    <div class="col-md-8">
+                        <input type="number" path="unitPrice" id="unitPrice" class="form-control" placeholder="Unit price in Rs." />
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                    <label class="control-label col-md-4" style="text-align: center">Quantity : </label>
+                    <div class="col-md-8">
+                        <input type="number" path="quantity" id="quantity" class="form-control" placeholder="Quantity Available" />
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                    <label class="control-label col-md-4" style="text-align: center">Select an Image : </label>
+                    <div class="col-md-8">
+                        <input type="file" path="file" id="file" class="form-control" />
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                    <label class="control-label col-md-4" style="text-align: center">Category : </label>
+                    <div class="col-md-8">
+                        <select path="categoryId" id="categoryId" class="form-control" itemLabel="name" itemValue="id"></select>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <button type="button" data-toggle="modal" data-target="#myCategoryModal" class="btn btn-secondary btn-xs">Add New Category</button>
+                </div>
+                <div class="mb-4">
+                    <button type="submit" class="btn btn-ani">
+                        <strong>Submit</strong>
+                    </button>
+
+                </div>
+        </div>
+    </div>
+</center>
+
+<br>
+<br>
+<br>
+<div class="row">
+
+    <div class='col-xs-12 col-lg-12'>
+        <center>
+            <hr>
+            <h1>List Of Available Products</h1>
+            <hr>
+        </center>
+    </div>
+
+
+    <div class='col-xs-12 col-lg-12'>
+
+        <div style="overflow: auto">
+
+            <table id="supplierProductsTable" class="table table-condensed table-striped table-bordered table-hover">
+
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>&#160;</th>
+                        <th>Name</th>
+                        <th>Brand</th>
+                        <th>Qty. Avail</th>
+                        <th>Unit Price</th>
+                        <th>Activate</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <img src="asset/images/item1.jpg" id="supplierDataTableImg" alt="">
+                        </td>
+                        <td>sss</td>
+                        <td>sss</td>
+                        <td>sss</td>
+                        <td>sss</td>
+                        <td>
+                            <span class="switch">
+                                <input checked="checked" type="checkbox" class="in switch" id="switch" style="margin: 0;">
+                                <label class="labe" for="switch">Activate</label>
+                            </span>
+                        </td>
+                        <td>
+                            <a href="" class="btn btn-ani edit">
+                                <i class="far fa-edit"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Id</th>
+                        <th>&#160;</th>
+                        <th>Name</th>
+                        <th>Brand</th>
+                        <th>Qty. Avail</th>
+                        <th>Unit Price</th>
+                        <th>Activate</th>
+                        <th></th>
+                    </tr>
+                </tfoot>
+
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<!-- Adding new Category modal -->
+<div class="modal fade" id="myCategoryModal" role="dialog" tabindex="-1">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content" style="background: url('./asset/images/back9.jpg') ">
+
+            <div class="modal-header text-center">
+                <h3 class="modal-title" id="registerModalTitle">Add New Category</h3>
+                <button type="button" class="close" id="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <form id="categoryForm" class="form-horizontal">
+
+                    <div class="form-group">
+
+                        <label for="category_name" class="control-label col-md-4">Category Name</label>
+
+                        <div class="col-12">
+
+                            <input type="text" id="category_name" class="form-control" />
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="category_description" class="control-label col-md-4">Description</label>
+
+                        <div class="col-12">
+
+                            <textarea cols="" rows="5" id="category_description" class="form-control"></textarea>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <div class="col-12 col-lg-12">
+
+                            <input type="submit" value="Add Category" class="btn btn-ani" style="margin: auto;" />
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
