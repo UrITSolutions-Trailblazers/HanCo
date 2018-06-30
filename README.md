@@ -1,7 +1,7 @@
 # HanCo
 E - Commerce
 
-## Instuctions to run app in localhost.
+## Instructions to run app in localhost.
 
 1. Install nodeJS and NPM for your OS. 
 
