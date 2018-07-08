@@ -24,4 +24,4 @@ const descriptionSchema = new mongoose.Schema({
 });
 
 module.exports.descriptionSchema = descriptionSchema;
-module.exports.Description = mongoose.model('product',descriptionSchema);
+module.exports.Description = mongoose.model('description',descriptionSchema);

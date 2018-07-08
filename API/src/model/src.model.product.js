@@ -20,9 +20,21 @@ const productSchema = new mongoose.Schema({
         required: true,
         min: 1
     },
+    displayDescription: {
+        type: String,
+        required: true
+    },
+    images: {
+        type: [String],
+        required: true
+    },
     quantity: {
         type: Number,
         required: true,
         min: 1
     }
 });
+
+module.exports.productSchema = productSchema;
+
+module.exports.Product = mongoose.model('product',productSchema)

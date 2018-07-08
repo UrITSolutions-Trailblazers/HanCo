@@ -1,26 +1,105 @@
-<div class="row mt-3">
-    <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-        <div class="card mb-3 text-dark bg-light pro-ani eye product-menu">
-            <a href="singleProduct.html">
-                <img class="card-img-top product" src="asset/images/item1.jpg" alt="">
-                <i class="fa fa-eye "></i>
-            </a>
-            <div class="card-body d-none d-sm-block">
-                <h4 class="card-title text-center">Product - 1</h4>
-                <p class="card-text text-center lead">Text</p>
-                <center class="row d-flex justify-content-center">
-                    <a href="#" class="btn btn-d my-2 my-sm-0" style="width: 50px">
-                        <span>
-                            <i class="fas fa-heart"></i>
-                        </span>
-                    </a>
-                    &#160; &#160;
-                    <a href="#" class="btn btn-s my-2 my-sm-0" style="width: 50px">
-                        <span>
-                            <i class="fas fa-shopping-cart"></i>
-                        </span>
-                    </a>
-                </center>
+<div class="">
+    <div class="row">
+        <div class="col m3 l3">
+            <ul id="slide-out" class="sidenav sidenav-fixed my-side">
+                <li class="nav-wrapper">
+                    <form>
+                        <div class="input-field">
+                            <input id="search" type="search" required>
+                            <label class="label-icon" for="search">
+                                <i class="material-icons">search</i>
+                            </label>
+                            <i class="material-icons">close</i>
+                        </div>
+                    </form>
+                </li>
+                <li>
+                    <button class="btn orange darken-2" style="width: 80%;">Some menu</button>
+                </li>
+                <li>
+                    <button class="btn green darken-2" style="width: 80%;">Some menu</button>
+                </li>
+                <li>
+                    <div class="divider"></div>
+                </li>
+                <li class="">
+                    <a class="subheader">
+                        <i class=" material-icons">filter_list</i>Filters</a>
+                </li>
+                <li>
+                    <div class="divider"></div>
+                </li>
+                <li class="nav-wrapper">
+                    <form>
+                        <div class="input-field">
+                            <input id="price-filter" type="search" required placeholder="Max Price">
+                            <label class="label-icon" for="price-filter">
+                                <i class="material-icons">&#8377;</i>
+                            </label>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+        </div>
+        <div class="col s12 m9 l9">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">Handicrafts</span>
+                    <hr>
+                    <div class="row  product-card">
+                        <div class="col s12 m4 l4" ng-repeat="product in products">
+                            <div class="card hoverable">
+                                <div class="card-image" style="max-height: 160px">
+                                    <img src="{{imageUrl}}/{{product.images[0]}}" height="160px" class="responsive">
+                                    <a class="btn-floating pulse halfway-fab waves-effect waves-light red">
+                                        <i class="material-icons">shopping_cart</i>
+                                    </a>
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title">{{product.name}}
+                                        
+                                    </span>
+                                </div>
+                                <div class="card-action">
+                                    <a class="left">5
+                                        <i class="material-icons">star_border</i>
+                                    </a>
+                                    <a href="#!/product/{{product._id}}" class="btn orange center">
+                                        <i class="material-icons">airplay</i>
+                                    </a>
+                                    <p class="right">&#8377; {{product.price}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="pagination">
+                        <li class="disabled">
+                            <a>
+                                <i class="material-icons">chevron_left</i>
+                            </a>
+                        </li>
+                        <li class="active orange">
+                            <a>1</a>
+                        </li>
+                        <li class="waves-effect">
+                            <a>2</a>
+                        </li>
+                        <li class="waves-effect">
+                            <a>3</a>
+                        </li>
+                        <li class="waves-effect">
+                            <a>4</a>
+                        </li>
+                        <li class="waves-effect">
+                            <a>5</a>
+                        </li>
+                        <li class="waves-effect">
+                            <a>
+                                <i class="material-icons">chevron_right</i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

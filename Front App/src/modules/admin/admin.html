@@ -1,138 +1,121 @@
-<center>
-    <div class="card" style="background: url('./asset/images/back9.jpg') ;max-width: 700px;">
-        <div class="card-header">
-            <center>
-                <h3>Supplier Management.</h3>
-            </center>
-        </div>
-        <div class="card-block">
-
-            <form class="form-horizontal m-4" method="POST">
-
-                <div class="form-group row">
-
-                    <label class="control-label col-md-4" style="text-align: center">Supplier : </label>
-                    <div class="col-md-8">
-                        <input type="text" id="supplier_name" class="form-control" placeholder="Supplier Name" />
-                    </div>
-
-                </div>
-
-                <div class="form-group row">
-
-                    <label class="control-label col-md-4" style="text-align: center">email : </label>
-                    <div class="col-md-8">
-                        <input type="email" id="supplier_email" class="form-control" placeholder="email" />
-                    </div>
-
-                </div>
-                <div class="form-group row">
-
-                    <label class="control-label col-md-4" style="text-align: center">Address : </label>
-                    <div class="col-md-8">
-                        <textarea id="supplier_address" class="form-control" placeholder="Address!"></textarea>
-                    </div>
-
-                </div>
-
-                <div class="form-group row">
-
-                    <label class="control-label col-md-4" style="text-align: center">Mobile No. : </label>
-                    <div class="col-md-8">
-                        <input type="text" id="supplier_no" class="form-control" placeholder="Mobile No." />
-                    </div>
-
-                </div>
-
-                <div class="form-group row">
-
-                    <label class="control-label col-md-4" style="text-align: center">Licence Number : </label>
-                    <div class="col-md-8">
-                        <input type="text" id="lic_no." class="form-control" placeholder="Licence Number" />
-                    </div>
-
-                </div>
-
-                <div class="mb-4">
-                    <button type="submit" id="supplier_add" class="btn btn-ani">
-                        <strong>Add Supplier</strong>
-                    </button>
-
-                </div>
-        </div>
-    </div>
-</center>
-
-<br>
-<br>
-<br>
-<br>
-
 <div class="row">
-
-    <div class='col-12'>
-        <center>
-            <hr>
-            <h1>List Of Suppliers.</h1>
-            <hr>
-        </center>
-    </div>
-
-
-    <div class='col-xs-12 col-lg-12'>
-
-        <div style="overflow: auto">
-
-            <table id="adminTable" class="table table-condensed table-striped table-bordered table-hover">
-
-                <thead>
-                    <tr>
-                        <th>Suppplier Id</th>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Pincode</th>
-                        <th>emailID</th>
-                        <th>Mobile No.</th>
-                        <th>Licence Id</th>
-                        <th>Activate</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Abc</td>
-                        <td>No.1,Big Street,Ambattur,Chennai</td>
-                        <td>600071</td>
-                        <td>abc@gmail.com</td>
-                        <td>1234567890</td>
-                        <td>h123456</td>
-                        <td>
-                            <span class="switch">
-                                <input checked="checked" type="checkbox" class="in switch" id="switch" style="margin: 0;">
-                                <label class="labe" for="switch">Activate</label>
-                            </span>
-                        </td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th>Suppplier Id</th>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Pincode</th>
-                        <th>emailID</th>
-                        <th>Mobile No.</th>
-                        <th>Licence Id</th>
-                        <th>Activate</th>
-                    </tr>
-                </tfoot>
-
-
-            </table>
-
+    <div class="col s12 m8 l8">
+        <div class="card hoverable">
+            <div class="card-content">
+                <span class="card-title">Suppliers</span>
+                <hr>
+                <a class="btn-floating halfway-fab waves-effect waves-light orange pulse modal-trigger" data-target="suppliers-register-modal">
+                    <i class="material-icons">add</i>
+                </a>
+                <table class="responsive-table highlight stripped bordered">
+                    <thead>
+                        <tr>
+                            <th data-field="id">Name</th>
+                            <th data-field="name">E-Mail</th>
+                            <th data-field="price">Phone</th>
+                            <th data-field="price">Lisence Number</th>
+                            <th data-field="price">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="supplier in suppliers">
+                            <td>{{supplier.user.firstName}}</td>
+                            <td>{{supplier.user.email}}</td>
+                            <td>{{supplier.user.phone}}</td>
+                            <td>{{supplier.lisenceNumber}}</td>
+                            <td>
+                                <button class="btn orange">
+                                    <i class="material-icons">edit</i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <ul class="pagination">
+                    <li class="disabled">
+                        <a>
+                            <i class="material-icons">chevron_left</i>
+                        </a>
+                    </li>
+                    <li class="active orange">
+                        <a>1</a>
+                    </li>
+                    <li class="waves-effect">
+                        <a>
+                            <i class="material-icons">chevron_right</i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-
     </div>
+    <div class="col s12 m4 l4">
+        <div class="card hoverable">
+            <div class="card-content">
+                <span class="card-title">Admins</span>
+                <hr>
+                <div ng-repeat="supplier in suppliers | filter: {user:{role: 'ADMIN'}}">
+                    <h5>{{supplier.user.firstName}}</h5>
+                    <p>{{supplier.user.email}}</p>
+                    <p>{{supplier.user.phone}}</p>
+                    <p>{{supplier.lisenceNumber}}</p>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-
+<!-- Suppliers Registration Modal -->
+<div id="suppliers-register-modal" class="modal">
+    <div class="modal-content">
+        <form>
+            <div class="row">
+                <div class="input-field col s12 m6 l6">
+                    <input type="text" id="first_name" ng-model="supplier.firstName" class="validate" required="true">
+                    <label for="first_name" data-error="Name is required">First Name</label>
+                </div>
+                <div class="input-field col s12 m6 l6">
+                    <input type="text" id="last_name" ng-model="supplier.lastName" class="validate" required="true">
+                    <label for="last_name" data-error="Name is required">Last Name</label>
+                </div>
+            </div>
+            <div class="input-field col s12">
+                <input type="email" id="_email" ng-model="supplier.email" class="validate" required="true">
+                <label for="_email" data-error="Invalid E-Mail" data-success="right">E-Mail</label>
+            </div>
+            <div class="input-field col s12">
+                <input type="password" id="_password" ng-model="supplier.password" class="validate" required="true">
+                <label for="_password" data-error="Password is required">Password</label>
+            </div>
+            <div class="input-field col s12">
+                <input type="text" id="phone" ng-model="supplier.phone" minlength="10" maxlength="10" class="validate" required="true">
+                <label for="phone" data-error="Invalid">Phone</label>
+            </div>
+            <div class="input-field col s12">
+                <input type="text" id="company-name" ng-model="supplier.companyName" class="validate" required="true">
+                <label for="company-name" >Company Name</label>
+            </div>
+            <div class="input-field col s12">
+                <input type="text" id="lisence-number" ng-model="supplier.lisenceNumber" class="validate" required="true">
+                <label for="lisence-number" >Lisence Number</label>
+            </div>
+            <div class="input-field col s12">
+                <input ng-show="!isLoader" ng-click="addSupplier()" type="submit" class="btn orange" value="Register" class="validate">
+                <div ng-show="isLoader" class="preloader-wrapper active">
+                    <div class="spinner-layer spinner-red-only">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>

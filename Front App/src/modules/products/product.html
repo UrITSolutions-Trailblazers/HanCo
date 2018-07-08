@@ -1,27 +1,32 @@
-<div class="container mt-4">
+<div class="">
     <div class="row">
-        <div class="col-12 col-sm-4 col-lg-4">
-            <div class="img-thumbnail">
-                <img src="asset/images/item2.jpg" class="img-sp" />
+        <div class="col s12 m8 l8">
+            <div class="card horizontal hoverable">
+                <div class="card-image">
+                    <img class="responsive" src="{{imageUrl}}/{{currentProduct.images[0]}}">
+
+                </div>
+                <div class="card-content">
+                    <a class="btn-floating halfway-fab waves-effect waves-light red">
+                        <i class="material-icons">add</i>
+                    </a>
+                    <span class="card-title">Card Title</span>
+                    <hr>
+
+                    <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I
+                        require little markup to use effectively.</p>
+                </div>
             </div>
         </div>
-        <hr>
-        <div class="col-12 col-sm-8 col-lg-8">
-            <h3>Clay Vase</h3>
-            <hr>
-            <p>It's always a good thing to have this!!</p>
-            <hr>
-            <h4>
-                Price:
-                <strong>&#8377; 12,500 /-</strong>
-            </h4>
-            <hr>
-            <h6>Quantity :
-                <span style="color:red">1</span>
-            </h6>
-            <a href="cart.html" class="btn btn-outline-success">
-                <i class="fas fa-cart-arrow-down"></i>&#160;Add To Cart</a>
-            <a href="products.html" class="btn btn-outline-info">Back</a>
+        <div class="col s12 m4 l4">
+            <div class="card hoverable">
+                <div class="card-content">
+                    <span class="card-title">Card Title</span>
+                    <hr>
+                    <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I
+                        require little markup to use effectively.</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>

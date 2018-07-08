@@ -1,0 +1,30 @@
+.my-side{
+    top: 5rem;
+    max-width: 25%
+}
+
+.navbar{
+    padding-left: 5%;
+    padding-right: 5%;
+    border-bottom: #f26b43 3px solid;
+
+    background-color: #969292;
+}
+
+body{
+    background-color: #c4bdbd;
+}
+
+#nav-link{
+    color: #fdd1c4
+}
+
+body{
+    /* max-height: 100% !important ; 
+    overflow-y: hidden !important ; */
+}
+
+.product-card{
+    max-height: 22rem !important ; 
+    overflow-y: scroll !important ;
+}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="hanCoApp">
 
 <head>
     <meta charset="UTF-8">
@@ -8,284 +8,162 @@
 
     <!-- Styling Part -->
 
-    <!-- Bootstrap 4 -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" crossorigin="anonymous">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
 
-    <!-- Font-Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" crossorigin="anonymous">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <!-- Google Custom Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
-
-    <!-- custom Styling -->
-    <link rel="stylesheet" href="asset\css\myapp.css">
-    <link rel="stylesheet" href="asset\css\about.css">
-
-    <!-- Animated.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-
-    <!-- Styles required for ParticleJS -->
-    <style>
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-        }
-
-        .background {
-            position: absolute;
-            display: block;
-            top: 0;
-            left: 0;
-            z-index: 0;
-        }
-    </style>
+    <!-- My custom CSS -->
+    <link rel="stylesheet" href="./asset/css/commonCSS.css">
 
     <!-- AngularJS dependencies -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular-route.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular-cookies.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload-shim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload.min.js"></script>
 
     <!-- Angular Modules -->
     <script src="./src/app.module.js"></script>
     <script src="./src/app.routes.js"></script>
     <script src="./src/modules/home/homeContoller.js"></script>
     <script src="./src/modules/user/userController.js"></script>
-
+    <script src="./src/modules/admin/adminController.js"></script>
+    <script src="./src/modules/nav/navController.js"></script>
+    <script src="./src/modules/suppliers/suppliersController.js"></script>
+    <script src="./src/modules/products/productController.js"></script>
 </head>
 
-<body ng-app="hanCoApp" style="background: url('./asset/images/back1.jpg')">
-    <canvas class="background"></canvas>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
-
-    <script>
-        window.onload = function () {
-            console.log('ParticleJS initialised.')
-            Particles.init({
-                selector: '.background',
-                maxParticles: 300,
-                color: 'white'
-            });
-        };
-    </script>
-    <div class="container-fluid">
-        <!-- NavBar Section -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top  img-thumbnail">
-            <div class="container">
-                <a class="navbar-brand" href="#!/home">HanCo.</a>
-                <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="collapsibleNavId">
-                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#!/about">About Us</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownId">
-                                <a class="dropdown-item" href="#">Category - 1</a>
-                                <a class="dropdown-item" href="#">Category - 2</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#!/products">
-                                <span>
-                                    <i class="fas fa-shopping-bag"></i>
-                                </span>Products</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#!/suppliers">
-                                <span>
-                                    <i class="fas fa-plus-circle"></i>
-                                </span>Manage</a>
-                        </li>
-                    </ul>
-
-                    <!-- Search Section -->
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search" style="width: 300px;">
-                        <button class="btn btn-ani icon my-2 my-sm-0" id="search" type="submit">
-                            <span>
-                                <i class="fas fa-search"></i>
-                            </span>
-                        </button>
-                    </form>
-                    <ul class="navbar-nav mt-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#!/admin">
-                                <span>
-                                    <i class="fas fa-at"></i>
-                                </span>Admin</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="" data-toggle="modal" data-target="#registerModal">
-                                <span>
-                                    <i class="fa fa-users" aria-hidden="true"></i>
-                                </span>Register</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="" data-toggle="modal" data-target="#loginModal">
-                                <span>
-                                    <i class="fa fa-user-circle" aria-hidden="true"></i>
-                                </span>Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#!/cart">
-                                <span>
-                                    <i class="fas fa-shopping-cart"></i>
-                                </span>Cart
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+<body>
+    <div class="navbar" ng-controller="navController as navCtrl">
+        <nav class="transparent z-depth-0">
+            <div class="nav-wrapper">
+                <a id="nav-link" href="#!" class="brand-logo">The HanCo.</a>
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <a id="nav-link" href="#!/home">Home</a>
+                    </li>
+                    <li>
+                        <a id="nav-link" href="#!/products">Products</a>
+                    </li>
+                    <li>
+                        <a id="nav-link" class="dropdown-trigger" data-target="categoryDropdown">Categories
+                            <i class="material-icons right">arrow_drop_down</i>
+                        </a>
+                    </li>
+                    <li ng-show="currentUser.role=='ADMIN'">
+                        <a id="nav-link" href="#!/admin">Admin</a>
+                    </li>
+                    <li ng-show="currentUser.role=='ADMIN' || currentUser.role=='SUPPLIER'">
+                        <a id="nav-link" href="#!/suppliers">Supplier</a>
+                    </li>
+                    <li ng-show="!currentUser">
+                        <a id="nav-link" class="modal-trigger" data-target="register-modal">Register</a>
+                    </li>
+                    <li ng-show="currentUser">
+                        <a id="nav-link">Logout</a>
+                    </li>
+                </ul>
             </div>
         </nav>
-        <hr>
-        <div class="container">
-            <ng-view></ng-view>
-        </div>
-
-        <!-- Footer Section -->
-        <div class="footer">
-            <hr>
-            <div class="card">
-                <div class="card-body">
-                    <center>
-                        <footer>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <p>Copyright &copy; Online Shopping</p>
-                                </div>
-                            </div>
-                        </footer>
-                    </center>
-                </div>
-            </div>
-        </div>
-
     </div>
+
+    <!-- Dropdown Structure -->
+    <ul id='categoryDropdown' class='dropdown-content'>
+        <li>
+            <a href="#!/products/handicrafts">Handicrafts</a>
+        </li>
+        <li>
+            <a href="#!/products/corporateGifts">Corporate Gifts</a>
+        </li>
+        <li>
+            <a href="#!/products/festivalGifts">Festival Gifts</a>
+        </li>
+    </ul>
+
+    <ng-view></ng-view>
+
     <!-- ------------------------------------------------------------------------------------------------------------------------------ -->
 
-    <!-- Registration Modal -->
-    <div class="modal fade" id="registerModal" tabindex="-1" ng-controller="userController as userCtrl" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content" style="background: url('./asset/images/back9.jpg') ">
-                <div class="modal-header text-center">
-                    <h3 class="modal-title" id="registerModalTitle">Registration</h3>
-                    <button type="button" class="close" id="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body" ng-submit="register()">
-                    <form>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <!-- <label for="firstName">First Name :</label> -->
-                                <div class="input-group form-group">
-                                    <input required="true" type="text" class="form-control" ng-model="user.firstName" id="firstName" placeholder="First Name">
+    <div ng-controller="userController as userCtrl">
+        <!-- Registration Modal -->
+        <div id="register-modal" class="modal">
+            <div class="modal-content">
+                <form>
+                    <div class="row">
+                        <div class="input-field col s12 m6 l6">
+                            <input type="text" id="first_name" ng-model="user.firstName" class="validate" required="true">
+                            <label for="first_name" data-error="Name is required">First Name</label>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <input type="text" id="last_name" ng-model="user.lastName" class="validate" required="true">
+                            <label for="last_name" data-error="Name is required">Last Name</label>
+                        </div>
+                    </div>
+                    <div class="input-field col s12">
+                        <input type="email" id="_email" ng-model="user.email" class="validate" required="true">
+                        <label for="_email" data-error="Invalid E-Mail" data-success="right">E-Mail</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input type="password" id="_password" ng-model="user.password" class="validate" required="true">
+                        <label for="_password" data-error="Password is required">Password</label>
+                    </div>
+                    <div class="input-field col s12 m6 l6">
+                        <input type="text" id="phone" ng-model="user.phone" minlength="10" maxlength="10" class="validate" required="true">
+                        <label for="phone" data-error="Invalid">Phone</label>
+                    </div>
+                    <div class="input-field col s12 m6 l6">
+                        <input ng-show="!isLoader" ng-click="register()" type="submit" class="btn orange" value="Register" class="validate">
+                        <div ng-show="isLoader" class="preloader-wrapper active">
+                            <div class="spinner-layer spinner-red-only">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="circle-clipper right">
+                                    <div class="circle"></div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <!-- <label for="lastName">Last Name :</label> -->
-                                <div class="input-group form-group">
-                                    <input required="true" type="text" class="form-control" ng-model="user.lastName" id="lastName" placeholder="Last Name">
-                                </div>
-                            </div>
                         </div>
-                        <!-- <label for="email">E-mail :</label> -->
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="fas fa-at"></i>
-                                </span>
-                            </div>
-                            <input required="true" type="email" class="form-control" ng-model="user.email" id="email" placeholder="E-mail">
-                        </div>
-                        <!-- <label for="email">E-mail :</label> -->
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="fas fa-phone"></i>
-                                </span>
-                            </div>
-                            <input required="true" type="text" minlength="10" maxlength="10" pattern="^[0-9]*$" class="form-control" ng-model="user.phone" id="phone" placeholder="Phone Number">
-                        </div>
-                        <!-- <label for="email">Password :</label> -->
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="fas fa-lock"></i>
-                                </span>
-                            </div>
-                            <input required="true" minlength="8" type="password" class="form-control" ng-model="user.password" id="password" placeholder="Password">
-                        </div>
-                        <!-- <label for="email">Confirm Your Password :</label> -->
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="fas fa-lock"></i>
-                                </span>
-                            </div>
-                            <input required="true" type="password" minlength="8" class="form-control" ng-model="confirmPassword" id="confirmPassword" placeholder="Confirm Password">
-                        </div>
-                        <input type="submit" class="btn btn-s my-2 my-sm-0" value="Register"/>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-d my-2 my-sm-0" data-dismiss="modal">Close</button>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 
-    <!-- Login Model -->
-    <div ng-controller="userController as userCtrl" class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content" style="background: url('./asset/images/back9.jpg') ">
-                <div class="modal-header text-center">
-                    <h3 class="modal-title" id="loginModalTitle">Login</h3>
-                    <button type="button" class="close" id="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form ng-submit="login()">
-                        <label for="email">E-mail :</label>
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="fas fa-at"></i>
-                                </span>
-                            </div>
-                            <input type="email" required="true" class="form-control" ng-model="user.email" id="_email" aria-describedby="emailHelpId" placeholder="E-mail">
-                        </div>
-                        <label for="email">Password :</label>
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="fas fa-lock"></i>
-                                </span>
-                            </div>
-                            <input type="password" required="true" class="form-control" ng-model="user.password" id="_password" placeholder="Password">
-                        </div>
-                        <input type="submit" class="btn btn-s my-2 my-sm-0" value="Login" />
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-d my-2 my-sm-0" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- MaterializeCSS initialization script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.dropdown-trigger');
+            const options = {
+                autoTrigger: true,
+                hover: true
+            }
+            var instances = M.Dropdown.init(elems, options);
+        });
 
-    <!-- JavaScripts -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.modal');
+            const options = {};
+            var instances = M.Modal.init(elems, options);
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.sidenav');
+            const options = {};
+            var instances = M.Sidenav.init(elems, options);
+        });
+
+
+    </script>
 
 </body>
 

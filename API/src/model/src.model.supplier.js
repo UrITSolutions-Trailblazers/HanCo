@@ -3,8 +3,9 @@ const { userSchema } = require('./src.model.user');
 
 const supplierSchema = new mongoose.Schema({
     user: {
-        type: userSchema,
-        required: false
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'user'
     },
     companyName: {
         type: String,
@@ -12,7 +13,8 @@ const supplierSchema = new mongoose.Schema({
     },
     lisenceNumber: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     isAdmin: {
         type: Boolean,
@@ -20,3 +22,6 @@ const supplierSchema = new mongoose.Schema({
         default: false
     }
 });
+
+module.exports.supplierSchema = supplierSchema;
+module.exports.Supplier = mongoose.model('supplier', supplierSchema);

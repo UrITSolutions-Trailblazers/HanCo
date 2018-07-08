@@ -33,6 +33,11 @@ const userSchema = new mongoose.Schema({
     addresses: {
         type: [addressScema],
         required: false
+    },
+    role: {
+        type: String,
+        required: false,
+        default: 'USER'
     }
 });
 
