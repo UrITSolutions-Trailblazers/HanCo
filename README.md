@@ -17,7 +17,11 @@ E - Commerce
 
 1.3 Now go to API folder and run following command.
 
+	`npm i`
+
+And then.
+
 	`nodemon index.js`
 
-## NOW GO THROUG THE WEB APPLICATION IN THE BROWSER THAT OPENED.
+## NOW GO THROUGH THE WEB APPLICATION IN THE BROWSER THAT OPENED.
 
