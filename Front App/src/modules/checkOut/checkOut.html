@@ -1,0 +1,117 @@
+<div class="row">
+    <div class="col s12 m7 l7">
+        <div class="card hoverable" style="min-height: 400px">
+            <div class="card-content">
+                <span class="card-title">Address</span>
+                <hr>
+                <div ng-show="!addresses[0]" class="card z-depth-3 center">
+                    <div class="card-content">
+                        <p>Oops no address found.</p>
+                    </div>
+                </div>
+                <div class="row" ng-show="addresses[0]" ng-repeat="address in addresses">
+                    <div class="col s12 m6 l6">
+                        <div class="card z-depth-3">
+                            <div class="card-content">
+                                <h5>{{address.name}}</h5>
+                                <p>{{address.doorNumber}}</p>
+                                <p>{{address.street}}</p>
+                                <p>{{address.city}}</p>
+                                <p>{{address.state}}</p>
+                                <p>Near {{address.landmark}}</p>
+                                <p>{{address.postalCode}}</p>
+                                <a class="btn orange darken-1 waves-effect waves-light modal-trigger" ng-click="setAddress($index)" data-target="orderModal" style="width: 100%">Select</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m5 l5">
+        <div class="card hoverable">
+            <div class="card-content">
+                <span class="card-title">Add New Address</span>
+                <hr>
+                <form ng-submit="addAddress()">
+                    <div class="input-field col s12 l6">
+                        <input type="text" id="name" ng-model="address.name" required class="validate">
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="input-field col s12 l6">
+                        <input type="text" id="doorNumber" ng-model="address.doorNumber" required class="validate">
+                        <label for="doorNumber">Door Number</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input type="text" id="street" ng-model="address.street" required class="validate">
+                        <label for="street">Street / Flat name</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input type="text" id="city" ng-model="address.city" required class="validate">
+                        <label for="city">City</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input type="text" id="state" ng-model="address.state" required class="validate">
+                        <label for="state">State</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input type="text" id="landmark" ng-model="address.landmark" class="validate">
+                        <label for="landmark">Landmark</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input type="text" id="postalCode" ng-model="address.postalCode" required class="validate">
+                        <label for="postalCode">Postal Code</label>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col s12 m12 l12">
+                                <input type="submit" style="width: 100%" value="Add address" class="btn orange waves-effect waves-light darken-1">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 
+    Payment finalizing modal
+ -->
+<div id="orderModal" class="modal">
+    <div class="modal-content">
+        <h4 class="center">Your order</h4>
+        <div class="row">
+            <div class="col s12 m6 l6">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Payment Summery</span>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m6 l6">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Payment Summery</span>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a ng-show="!loader" ng-click="pay()" style="width: 100%" class="btn waves-effect waves-light orange">Confirm and Pay</a>
+        <div ng-show="loader" class="preloader-wrapper small active center">
+            <div class="spinner-layer spinner-green-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

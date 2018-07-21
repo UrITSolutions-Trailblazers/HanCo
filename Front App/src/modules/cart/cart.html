@@ -1,88 +1,55 @@
-<div class="card">
-    <div class="card-body" style="background: url('./asset/images/back9.jpg') ">
-        <div class="row">
-
-            <div class='col-12'>
-                <center>
-                    <hr>
-                    <h1>Your Cart.</h1>
-                    <hr>
-                </center>
+<div class="row">
+    <div class="col s12 m8 l8">
+        <div class="card hoverable">
+            <div class="card-content">
+                <span class="card-title">Cart</span>
+                <hr>
+                <table class="highlight striped responsive">
+                    <thead>
+                        <tr>
+                            <th data-field="id">Name</th>
+                            <th data-field="name">Quantity</th>
+                            <th data-field="price">Cost</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in cart.cartItems">
+                            <td>{{item.product.name}}</td>
+                            <td>{{item.quantity}}</td>
+                            <td>&#8377; {{item.subTotal}}</td>
+                            <td>
+                                <button class="waves-effect waves-light btn red">
+                                    <i class="material-icons left">delete_sweep</i>Remove</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
+                <span class="left">
+                    <strong>Grand Total </strong> &#8377;{{cart.grandTotal}}</span>
+                <a href="#!/checkOut/{{cart._id}}" class="waves-effect waves-light btn green darken-1 right">
+                    <i class="material-icons left">check_box</i>Check out</a>
+                <br>
             </div>
+        </div>
+    </div>
+    <div class="col s12 m4 l4">
+        <div class="card hoverable">
+            <div class="card-content">
+                <span class="card-title">Profile</span>
+                <hr>
+                <img src="" alt="">
+                <h5>{{currentUser.firstName}}</h5>
+                <p>{{currentUser.email}}</p>
+            </div>
+        </div>
+        <div class="card hoverable">
+            <div class="card-content">
+                <span class="card-title">Addresses</span>
+                <hr>
+                <div>
 
-
-            <div class='col-12'>
-
-                <div style="overflow: auto">
-
-                    <table id="cartTable" class="table table-bordered table-striped table-hover">
-
-                        <thead class="">
-                            <tr>
-                                <th>S.No </th>
-                                <th>&#160;</th>
-                                <th>Product Name</th>
-                                <th>Sub-Total</th>
-                                <th>Quantity</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-hover">
-                            <tr>
-                                <td>1.</td>
-                                <td>
-                                    <img src="asset/images/item1.jpg" id="cartTableImg" alt="">
-                                </td>
-                                <td>Vase</td>
-                                <td>
-                                    <strong>&#8377;12,500</strong>
-                                </td>
-                                <td>
-                                    <center class="row d-flex justify-content-center">
-                                        <a href="#" class="btn btn-d my-2 my-sm-0 cart-op">
-                                            <span>
-                                                <i class="fas fa-minus"></i>
-                                            </span>
-                                        </a>
-                                        <h6>
-                                            <span class="badge badge-default cart-op">2</span>
-                                        </h6>
-                                        <a href="#" class="btn btn-s my-2 my-sm-0 cart-op">
-                                            <span>
-                                                <i class="fas fa-plus"></i>
-                                            </span>
-                                        </a>
-                                    </center>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2.</td>
-                                <td>
-                                    <img src="asset/images/item2.jpg" id="cartTableImg" alt="">
-                                </td>
-                                <td>Vase</td>
-                                <td>
-                                    <strong>&#8377;12,500</strong>
-                                </td>
-                                <td>
-                                    <center class="row d-flex justify-content-center">
-                                        <a href="#" class="btn btn-d my-2 my-sm-0 cart-op">
-                                            <span>
-                                                <i class="fas fa-minus"></i>
-                                            </span>
-                                        </a>
-                                        <h6>
-                                            <span class="badge badge-default cart-op">1</span>
-                                        </h6>
-                                        <a href="#" class="btn btn-s my-2 my-sm-0 cart-op">
-                                            <span>
-                                                <i class="fas fa-plus"></i>
-                                            </span>
-                                        </a>
-                                    </center>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>

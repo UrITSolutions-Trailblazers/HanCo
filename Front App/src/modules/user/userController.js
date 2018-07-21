@@ -36,6 +36,7 @@ app.controller('userController', ['$scope', '$rootScope', '$cookies', '$http', '
                 (res) => {
                     $rootScope.currentUser = res.data.user;
                     $rootScope.token = res.data.token;
+                    $cookies.putObject('token', res.data.token);
                     $cookies.putObject('currentUser', $scope.currentUser);
                     M.toast({ html: 'Hi '+$rootScope.currentUser.firstName })
                     $scope.user = {};

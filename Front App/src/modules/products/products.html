@@ -3,28 +3,27 @@
         <div class="col m3 l3">
             <ul id="slide-out" class="sidenav sidenav-fixed my-side">
                 <li class="nav-wrapper">
-                    <form>
-                        <div class="input-field">
-                            <input id="search" type="search" required>
-                            <label class="label-icon" for="search">
-                                <i class="material-icons">search</i>
-                            </label>
-                            <i class="material-icons">close</i>
-                        </div>
-                    </form>
+
+                </li>
+                <!-- <li>
+                    <button class="btn orange darken-2 hoverable" style="width: 80%;">Some menu</button>
                 </li>
                 <li>
-                    <button class="btn orange darken-2" style="width: 80%;">Some menu</button>
-                </li>
-                <li>
-                    <button class="btn green darken-2" style="width: 80%;">Some menu</button>
-                </li>
+                    <button class="btn green darken-2 hoverable" style="width: 80%;">Some menu</button>
+                </li> -->
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li class="">
+                <!-- <li class="nav-wrapper">
                     <a class="subheader">
-                        <i class=" material-icons">filter_list</i>Filters</a>
+                        <i class=" material-icons">filter_list</i>Filters
+                    </a>
+
+                </li> -->
+                <li class="nav-wrapper">
+                    <button ng-click="productCtrl.filterProducts()" style="width: 80%;" class="pulse red btn lighten-2 waves-effect waves-light">
+                        Filter <i class="right material-icons">graphic_eq</i>
+                    </button>
                 </li>
                 <li>
                     <div class="divider"></div>
@@ -32,7 +31,7 @@
                 <li class="nav-wrapper">
                     <form>
                         <div class="input-field">
-                            <input id="price-filter" type="search" required placeholder="Max Price">
+                            <input id="price-filter" ng-model="productCtrl.filter.price" type="search" required placeholder="Max Price">
                             <label class="label-icon" for="price-filter">
                                 <i class="material-icons">&#8377;</i>
                             </label>
@@ -43,28 +42,51 @@
         </div>
         <div class="col s12 m9 l9">
             <div class="card">
-                <div class="card-content">
-                    <span class="card-title">Handicrafts</span>
+                <div class="card-content product-card">
+                    <div class="card-title">
+                        <div class="row">
+                            <form ng-submit="productCtrl.filterProducts()">
+                                <div class="col s12 m4 l4">
+                                    Handicrafts
+                                </div>
+                                <div class="col s19 m6 l6">
+                                    <input id="search" ng-model="productCtrl.filter.name" type="search" placeholder="Search" ng-model="search">
+                                </div>
+                                <div class="col s3 m2 l2">
+                                    <button class="btn orange waves-effect waves-light" type="submit">
+                                        <i class="material-icons center">search</i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                     <hr>
-                    <div class="row  product-card">
-                        <div class="col s12 m4 l4" ng-repeat="product in products">
+                    <div class="row inner-card" style="min-height: 400px">
+                        <div class="container" ng-show="productCtrl.productsLoader">
+                            <br>
+                            <br>
+                            <div class="progress">
+                                <div class="indeterminate"></div>
+                            </div>
+                        </div>
+                        <div class="col s12 m4 l4" ng-repeat="product in productCtrl.products">
                             <div class="card hoverable">
-                                <div class="card-image" style="max-height: 160px">
-                                    <img src="{{imageUrl}}/{{product.images[0]}}" height="160px" class="responsive">
-                                    <a class="btn-floating pulse halfway-fab waves-effect waves-light red">
+                                <div class="card-image" style="max-height: 210px; min-height: 210px">
+                                    <img src="{{imageUrl}}/{{product.images[0]}}" height="210px" class="responsive">
+                                    <a class="btn-floating pulse hoverable halfway-fab waves-effect waves-light red" ng-click="addToCart(product._id, product.supplier)">
                                         <i class="material-icons">shopping_cart</i>
                                     </a>
                                 </div>
                                 <div class="card-content">
                                     <span class="card-title">{{product.name}}
-                                        
+
                                     </span>
                                 </div>
                                 <div class="card-action">
                                     <a class="left">5
                                         <i class="material-icons">star_border</i>
                                     </a>
-                                    <a href="#!/product/{{product._id}}" class="btn orange center">
+                                    <a href="#!/product/{{product._id}}" class="btn orange center waves-effect waves-light">
                                         <i class="material-icons">airplay</i>
                                     </a>
                                     <p class="right">&#8377; {{product.price}}</p>
@@ -73,28 +95,17 @@
                         </div>
                     </div>
                     <ul class="pagination">
-                        <li class="disabled">
-                            <a>
+                        <li class="waves-effect" ng-disabled="productCtrl.prev"> <!--  class="disabled" -->
+                            <a ng-click="productCtrl.previousPage()">
                                 <i class="material-icons">chevron_left</i>
                             </a>
                         </li>
-                        <li class="active orange">
-                            <a>1</a>
+                        <li class="" ng-repeat="page in productCtrl.pages" > <!-- orange actice -->
+                            <a>{{page}}</a>
                         </li>
-                        <li class="waves-effect">
-                            <a>2</a>
-                        </li>
-                        <li class="waves-effect">
-                            <a>3</a>
-                        </li>
-                        <li class="waves-effect">
-                            <a>4</a>
-                        </li>
-                        <li class="waves-effect">
-                            <a>5</a>
-                        </li>
-                        <li class="waves-effect">
-                            <a>
+
+                        <li class="waves-effect" ng-disabled="productCtrl.next">
+                            <a ng-click="productCtrl.nextPage()">
                                 <i class="material-icons">chevron_right</i>
                             </a>
                         </li>

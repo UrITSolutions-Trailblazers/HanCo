@@ -6,11 +6,14 @@ var app = angular.module('hanCoApp', [
 
 app.constant('REST_URI', 'http://localhost:8000/hanCo');
 
-app.factory('httpRequestInterceptor', function ($rootScope) {
+app.factory('httpRequestInterceptor', function ($rootScope, $cookies) {
     return {
         request: function (config) {
 
-            config.headers['x-auth-token'] = $rootScope.token;
+            var me = this;
+            me.token = $cookies.getObject('token');
+
+            config.headers['x-auth-token'] = me.token;
             config.headers['Accept'] = 'application/json;odata=verbose';
 
             return config;

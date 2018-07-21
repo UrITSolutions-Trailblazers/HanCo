@@ -6,7 +6,7 @@ app.controller('navController', ['$scope', '$rootScope', '$cookies', '$http', 'R
     
         $scope.$on('$routeChangeSuccess', function () {
 
-            $http.get(REST_URI + '/supplier/category').then(
+            $http.get(REST_URI + '/user/category').then(
                 (res) => {
                     console.log('Got all categories.')
                     $rootScope.categories = res.data;
@@ -24,7 +24,9 @@ app.controller('navController', ['$scope', '$rootScope', '$cookies', '$http', 'R
 
         $scope.logout = function () {
             $cookies.remove('currentUser');
+            $cookies.remove('token');
             $rootScope.currentUser = undefined;
+            $rootScope.token = undefined;
         }
 
         $rootScope.categories = [];

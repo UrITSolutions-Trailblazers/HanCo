@@ -6,22 +6,22 @@
                 <hr>
                 <form ng-submit="addProduct()">
                     <div class="input-field col s12 l6">
-                        <input type="text" id="name" ng-model="product.name" class="validate" />
-                        <label for="name">Name</label>
+                        <input type="text" required id="name" ng-model="product.name" class="validate" />
+                        <label class="{{active}}" for="name">Name</label>
                     </div>
 
                     <div class="input-field col s12 l6">
-                        <input type="number" ng-model="product.price" id="unitPrice" class="validate" />
-                        <label for="unitPrice">Unit Price</label>
+                        <input type="number" ng-model="product.price" required id="unitPrice" class="validate" />
+                        <label class="{{active}}" for="unitPrice">Unit Price</label>
                     </div>
 
                     <div class="input-field col s12 l6">
-                        <input type="number" ng-model="product.quantity" id="quantity" class="validate" />
-                        <label for="quantity">Quantity</label>
+                        <input type="number" ng-model="product.quantity" required id="quantity" class="validate" />
+                        <label class="{{active}}" for="quantity">Quantity</label>
                     </div>
 
                     <div class="input-field col s12 l6">
-                        <select ng-model="product.category.name">
+                        <select ng-model="product.category" required>
                             <option value="" disabled selected>Select Category</option>
                             <option ng-repeat="category in categories" value="{{category.name}}">{{category.name}}</option>
                         </select>
@@ -30,25 +30,76 @@
 
                     <div class="input-field col s12 l12" style="height: 300px; max-height: 300px">
                         <div class="col s12 m6 l6">
-                            <label for="">Select an Image : </label>
-                            <input type="file" ng-model="product.image" id="file" class="form-control" ngf-select ngf-pattern="'image/*'" accept="image/*"
-                                ngf-max-size="20MB" />
+                            <label class="{{active}}" for="">Select an Image : </label>
+                            <input type="file" required ng-model="product.image" required id="file" class="form-control" ngf-select ngf-pattern="'image/*'"
+                                accept="image/*" ngf-max-size="20MB" />
                         </div>
                         <div class="col s12 m6 l6">
                             <img class="responsive" height="300px" ngf-thumbnail="product.image" />
                         </div>
                     </div>
+                    <div class="input-field col s12 l12">
+                        <div class="col s12 m4 l4">
+                            <label>
+                                <input name="group1" type="radio" ng-model="product.section" value="handicrafts" checked />
+                                <span>Handicrafts</span>
+                            </label>
+                        </div>
+                        <div class="col s12 m4 l4">
+                            <label>
+                                <input name="group1" type="radio" ng-model="product.section" value="corporateGifts" />
+                                <span>Corporate Gifts</span>
+                            </label>
+                        </div>
+                        <div class="col s12 m4 l4">
+                            <label>
+                                <input name="group1" type="radio" ng-model="product.section" value="festivalGifts" />
+                                <span>Festival Gifts</span>
+                            </label>
+                        </div>
+                    </div>
                     <div class="mb-4">
                         <button type="button" data-target="descriptionModal" class="btn modal-trigger">Add Description</button>
                         <button type="button" data-target="myCategoryModal" class="btn modal-trigger">Add New Category</button>
-                        <input type="submit" value="Submit" class="btn btn-ani" />
+                        <input ng-show="!productLoader" type="submit" value="Submit" class="btn btn-ani" />
+                        <div ng-show="productLoader" class="preloader-wrapper active">
+                            <div class="spinner-layer spinner-red-only">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
         <div class="card hoverable">
             <div class="card-content">
-                <span class="card-title">Products</span>
+                <div class="">
+                    <div class="row">
+                        <div class="col s12 m6 l6">
+                            <span class="card-title">Products</span>
+                        </div>
+                        <div class="col s12 m6 l6">
+                            <div class="row">
+                                <div class="col s8 m8 l8">
+                                    <input id="search" type="search" placeholder="Search" ng-model="search">
+                                </div>
+                                <div class="col s4 m4 l4">
+                                    <button class="btn orange">
+                                        <i class="material-icons">search</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <hr>
                 <table class="responsive-table highlight stripped bordered">
                     <thead>
@@ -102,6 +153,75 @@
                 <p>{{currentUser.phone}}</p>
             </div>
         </div>
+        <div class="card hoverable blue-grey darken-1">
+            <div class="card-content white-text">
+                <span class="card-title center">Recieved Orders</span>
+                <hr>
+            </div>
+        </div>
+        <div class="card hoverable" ng-repeat="order in orders">
+            <div class="card-content">
+                <span class="card-title">{{order.cartItem.product.name}}</span>
+                <p>{{order.cartItem.product._id}}</p>
+                <hr>
+                <strong>{{order.address.name}}</strong>
+                <p>{{order.address.doorNumber}}</p>
+                <p>{{order.address.street}}</p>
+                <p>{{order.address.city}}</p>
+                <p>{{order.address.state}}</p>
+                <p>Near {{order.address.landmark}}</p>
+                <p>{{order.address.postalCode}}</p>
+                <br>
+                <div class="">
+                    <button ng-show="!order.cartItem.isApproved" style="width: 100%" ng-click="approve($index)" class="btn orange waves-effect waves-light darken-3">Confirm</button>
+
+                    <div class="row" ng-show="order.cartItem.isApproved">
+                        <div class="col s12 l4 l6">
+                            <button ng-show="!order.cartItem.isPacked" ng-click="pack($index)" class="btn orange waves-effect waves-light darken-3">Packed</button>
+                            <a ng-show="order.cartItem.isPacked" class="green-text">
+                                <i class="material-icons ">done</i>Packed</a>
+                        </div>
+                        <div class="col s12 l4 l6">
+                            <button ng-show="!order.cartItem.isShipped" data-target="dispatchModal" ng-disabled="!order.cartItem.isPacked" ng-click="setCurrentOrder($index)"
+                                class="modal-trigger btn green waves-effect waves-light darken-3">Dispatched</button>
+                            <a ng-show="order.cartItem.isShipped" class="green-text">
+                                <i class="material-icons ">done_all</i>Dispatched</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="dispatchModal" class="modal">
+    <div class="modal-content">
+        <h4>Dispatch Details</h4>
+        <form ng-submit="suppliersCtrl.dispatch()">
+            <div class="input-field col s12 l6">
+                <input ng-model="suppliersCtrl.dispatch.courierName" required type="text" id="courierName" class="validate">
+                <label for="courierName">Courier Name</label>
+            </div>
+            <div class="input-field col s12 l6">
+                <input ng-model="suppliersCtrl.dispatch.trackingId" required type="text" id="trackingId" class="validate">
+                <label for="trackingId">Tracking Id</label>
+            </div>
+            <input ng-show="!suppliersCtrl.dispatchLoader" type="submit" value="Dispatch" class="btn orange waves-effect waves-light darken-3">
+            <div class="preloader-wrapper small active" ng-show="suppliersCtrl.dispatchLoader">
+                <div class="spinner-layer spinner-green-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 

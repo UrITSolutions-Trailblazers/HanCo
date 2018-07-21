@@ -1,0 +1,80 @@
+<div class="row">
+    <div class="col s12 m8 l8">
+        <div class="card hoverable">
+            <div class="card-content">
+                <span class="card-title">Orders</span>
+                <hr>
+            </div>
+        </div>
+        <div class="card hoverable" ng-repeat="order in orders">
+            <div class="card-content">
+                <div class="">
+                    <div class="row">
+                        <div class="col s12 m8 l8">
+                            <span class="card-title">{{order.cartItem.product.name}}</span>
+                            <hr>
+                            <br>
+                            <br>
+                            <br>
+                            <div class="row">
+                                <div class="col s1 m1 l1">
+                                    <i  ng-show="order.cartItem.isApproved" data-position="top" data-tooltip="Order confirmed" class="tooltipped center green-text darken-3 small material-icons">check</i>
+                                    <i  ng-show="!order.cartItem.isApproved" class="center grey-text darken-5 small material-icons">check</i>
+                                </div>  
+                                <div class="col s4 m4 l4">
+                                    <div class="progress center" ng-show="order.cartItem.isPacked">
+                                        <div class="determinate" style="width: 100%"></div>
+                                    </div>
+                                    <div class="progress center" ng-show="!order.cartItem.isPacked">
+                                        <div class="determinate" style="width: 20%"></div>
+                                    </div>
+                                </div>
+                                <div class="col s1 m1 l1">
+                                    <i ng-show="!order.cartItem.isPacked" class="left grey-text darken-5 small material-icons">card_giftcard</i>
+                                    <i data-position="top" data-tooltip="Packed" ng-show="order.cartItem.isPacked" class="tooltipped left green-text darken-5 small material-icons">card_giftcard</i>
+                                </div>
+                                <div class="col s4 m4 l4">
+                                    <div ng-show="order.cartItem.isShipped" class="progress center">
+                                        <div class="determinate" style="width: 100%"></div>
+                                    </div>
+                                    <div ng-show="!order.cartItem.isShipped" class="progress center">
+                                        <div class="determinate" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                <div class="col s1 m1 l1">
+                                    <div class="col s1 m1 l1" ng-show="!order.cartItem.isShipped">
+                                        <i class="grey-text darken-5 small material-icons">local_shipping</i>
+                                    </div>
+                                    <div class="col s1 m1 l1" ng-show="order.cartItem.isShipped">
+                                        <i data-position="top" data-tooltip="Dispatched by {{order.courierName}} - {{order.trackingId}}" class="tooltipped green-text darken-5 small material-icons">local_shipping</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s12 m4 l4">
+                            <strong>{{order.address.name}}</strong>
+                            <p>{{order.address.doorNumber}}</p>
+                            <p>{{order.address.street}}</p>
+                            <p>{{order.address.city}}</p>
+                            <p>{{order.address.state}}</p>
+                            <p>Near {{order.address.landmark}}</p>
+                            <p>{{order.address.postalCode}}</p>
+                            <button class="btn red waves-effect waves-light darken-1" style="width: 100%;">Cancel Order</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m4 l4">
+        <div class="card hoverable">
+            <div class="card-content">
+                <span class="card-title">Profile</span>
+                <hr>
+                <h5>{{currentUser.firstName}}</h5>
+                <p>{{currentUser.email}}</p>
+                <p>{{currentUser.phone}}</p>
+            </div>
+        </div>
+    </div>
+</div>

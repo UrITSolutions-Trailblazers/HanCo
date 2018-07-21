@@ -8,30 +8,32 @@
                 <div class="card-content center" ng-controller="userController as userCtrl">
                     <img src="./asst/images/dp.jpeg" height="50%" width="50%" alt="" class="circle">
                     <div class="row">
-                        <div class="input-field col s12 l12">
-                            <input type="text" id="email" ng-model="user.email" class="validate">
-                            <label for="email">E-Mail</label>
-                        </div>
-                        <div class="input-field col s12 l12">
-                            <input type="password" id="password" ng-model="user.password" class="validate">
-                            <label for="password">Password</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <input ng-show="!isLoader" style="width: 100%"  ng-click="login()" type="submit" class="btn orange darken-1" value="Login">
-                            <div ng-show="isLoader" class="preloader-wrapper small active">
-                                <div class="spinner-layer spinner-green-only">
-                                    <div class="circle-clipper left">
-                                        <div class="circle"></div>
-                                    </div>
-                                    <div class="gap-patch">
-                                        <div class="circle"></div>
-                                    </div>
-                                    <div class="circle-clipper right">
-                                        <div class="circle"></div>
+                        <form ng-submit="login()">
+                            <div class="input-field col s12 l12">
+                                <input type="text" id="email" ng-model="user.email" class="validate">
+                                <label for="email">E-Mail</label>
+                            </div>
+                            <div class="input-field col s12 l12">
+                                <input type="password" id="password" ng-model="user.password" class="validate">
+                                <label for="password">Password</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input ng-show="!isLoader" style="width: 100%" type="submit" class="btn orange darken-1 waves-effect waves-light" value="Login">
+                                <div ng-show="isLoader" class="preloader-wrapper small active">
+                                    <div class="spinner-layer spinner-green-only">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

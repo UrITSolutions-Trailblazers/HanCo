@@ -24,6 +24,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload-shim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload.min.js"></script>
 
+    <!-- Razorpay dependency -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
     <!-- Angular Modules -->
     <script src="./src/app.module.js"></script>
     <script src="./src/app.routes.js"></script>
@@ -33,6 +36,11 @@
     <script src="./src/modules/nav/navController.js"></script>
     <script src="./src/modules/suppliers/suppliersController.js"></script>
     <script src="./src/modules/products/productController.js"></script>
+    <script src="./src/modules/cart/cartController.js"></script>
+    <script src="./src//modules//checkOut/checkOutController.js"></script>
+    <script src="./src/modules/checkOut/paymentController.js"></script>
+    <script src="./src/modules/orders/ordersController.js"></script>
+
 </head>
 
 <body>
@@ -62,6 +70,12 @@
                         <a id="nav-link" class="modal-trigger" data-target="register-modal">Register</a>
                     </li>
                     <li ng-show="currentUser">
+                        <a id="nav-link" href="#!/cart">Cart</a>
+                    </li>
+                    <li ng-show="currentUser">
+                        <a id="nav-link" href="#!/orders">Orders</a>
+                    </li>
+                    <li ng-show="currentUser" ng-click="logout()">
                         <a id="nav-link">Logout</a>
                     </li>
                 </ul>
@@ -114,7 +128,8 @@
                         <label for="phone" data-error="Invalid">Phone</label>
                     </div>
                     <div class="input-field col s12 m6 l6">
-                        <input ng-show="!isLoader" ng-click="register()" type="submit" class="btn orange" value="Register" class="validate">
+                        <input ng-show="!isLoader" ng-click="register()" type="submit" class="waves-effect waves-light btn orange" value="Register"
+                            class="validate">
                         <div ng-show="isLoader" class="preloader-wrapper active">
                             <div class="spinner-layer spinner-red-only">
                                 <div class="circle-clipper left">

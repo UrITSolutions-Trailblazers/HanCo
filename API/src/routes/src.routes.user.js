@@ -7,7 +7,9 @@ const jwt = require('jsonwebtoken');
 
 const { User } = require('../model/src.model.user');
 const { Product } = require('../model/src.model.product');
-
+const { Category } = require('../model/src.model.category');
+const { CartItem } = require('../model/src.model.cardItem');
+const { Cart } = require('../model/src.model.cart');
 router.post('/', async (req, res) => {
 
     const user = new User(_.pick(req.body, ['firstName', 'lastName', 'email', 'password', 'phone']));
@@ -46,9 +48,62 @@ router.post('/login', async (req, res) => {
     res.send({ token: token, user: _.pick(user, ['firstName', 'email', 'phone', '_id', 'role']) });
 });
 
-router.get('/products', async (req, res) => {
-    res.send(await Product.find({}));
+router.post('/count', async (req, res) => {
+
+    const filter = req.body;
+    if (filter.name) {
+        filter.name = { $regex: `^.*${filter.name}.*`, $options: "i" }
+    }else{
+        // console.log('No name filter')
+        delete filter.name;
+    }
+
+    if(filter.price) {
+        filter.price = {$lt : filter.price}
+    }else{
+        delete filter.price;
+    }
+    console.log(filter);
+    const count = await Product.count(filter)
+    const result = JSON.stringify(count);
+    res.send(result);
 });
+
+router.post('/products', async (req, res) => {
+    const filter = req.body.filter;
+    const page = req.body.page;
+    if (filter.name) {
+        filter.name = { $regex: `^.*${filter.name}.*`, $options: "i" }
+    }else{
+        // console.log('No name filter')
+        delete filter.name;
+    }
+
+    if(filter.price) {
+        filter.price = {$lt : filter.price}
+    }else{
+        delete filter.price;
+    }
+    console.log(filter);
+    let data  = {};
+    data.products = await Product.find(filter).skip(3 * (page - 1)).limit(3);
+    data.count = await Product.count(filter);
+    console.log(data);
+    res.send(data);
+});
+
+router.get('/category', async (req, res) => {
+
+    res.send(await Category.find({}));
+});
+
+router.post('/product', async (req, res) => {
+    // console.log('POST /product route called')
+    const productId = req.body.id;
+    // console.log(productId);    
+    res.send(await Product.findById(productId));
+});
+
 
 router.get('/test', async (req, res) => {
     console.log(req.headers);

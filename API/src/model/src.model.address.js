@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 
 const addressScema = new mongoose.Schema({
 
+    name: {
+        type: String,
+        required: true
+    },
     doorNumber: {
         type: String,
         required: true,

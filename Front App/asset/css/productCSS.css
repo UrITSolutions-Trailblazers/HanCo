@@ -25,6 +25,11 @@ body{
 }
 
 .product-card{
-    max-height: 22rem !important ; 
+    height: 32rem !important ;
+    max-height: 32rem !important ; 
     overflow-y: scroll !important ;
+}
+
+.inner-card{
+    min-height: 2rem
 }
