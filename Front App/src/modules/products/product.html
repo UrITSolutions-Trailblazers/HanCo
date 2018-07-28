@@ -26,11 +26,22 @@
                 <div class="card-content">
                     <span class="card-title">Description</span>
                     <hr>
-                    <p><strong>Price: </strong>&#8377; {{productCtrl.currentProduct.price}}</p>
-                    <p><strong>Material: </strong>{{productCtrl.currentProduct.description.material}}</p>
-                    <p><strong>Height: </strong>{{productCtrl.currentProduct.description.height}}</p>
-                    <p><strong>Width: </strong>{{productCtrl.currentProduct.description.width}}</p>
-                    <p><strong>Weight: </strong>{{productCtrl.currentProduct.description.weight}}</p>
+                    <p>
+                        <strong>Price: </strong>&#8377; {{productCtrl.currentProduct.price}}</p>
+                    <p>
+                        <strong>Material: </strong>{{productCtrl.currentProduct.description.material}}</p>
+                    <p>
+                        <strong>Height: </strong>{{productCtrl.currentProduct.description.height}}</p>
+                    <p>
+                        <strong>Width: </strong>{{productCtrl.currentProduct.description.width}}</p>
+                    <p>
+                        <strong>Weight: </strong>{{productCtrl.currentProduct.description.weight}}</p>
+                    <br>
+                    <div class="">
+                        <a href="#!/product/{{product._id}}" class="btn orange center waves-effect waves-light">
+                            <i class="left material-icons">shopping_basket</i> Buy Now
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="card hoverable">

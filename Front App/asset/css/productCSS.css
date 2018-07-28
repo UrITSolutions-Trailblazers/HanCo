@@ -8,15 +8,15 @@
     padding-right: 5%;
     border-bottom: #f26b43 3px solid;
 
-    background-color: #969292;
+    background-color: #be5151;
 }
 
 body{
-    background-color: #afaaaa;
+    background-color: #ffffff;
 }
 
 #nav-link{
-    color: #fdd1c4
+    color: #ffffff
 }
 
 body{
@@ -32,4 +32,9 @@ body{
 
 .inner-card{
     min-height: 2rem
+}
+
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid rgb(177, 50, 50);
+    box-shadow: 0 1px 0 0 rgb(177, 50, 50);
 }

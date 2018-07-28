@@ -44,55 +44,60 @@
 </head>
 
 <body>
-    <div class="navbar" ng-controller="navController as navCtrl">
-        <nav class="transparent z-depth-0">
-            <div class="nav-wrapper">
-                <a id="nav-link" href="#!" class="brand-logo">The HanCo.</a>
-                <ul class="right hide-on-med-and-down">
-                    <li>
-                        <a id="nav-link" href="#!/home">Home</a>
-                    </li>
-                    <li>
-                        <a id="nav-link" href="#!/products">Products</a>
-                    </li>
-                    <li>
-                        <a id="nav-link" class="dropdown-trigger" data-target="categoryDropdown">Categories
-                            <i class="material-icons right">arrow_drop_down</i>
-                        </a>
-                    </li>
-                    <li ng-show="currentUser.role=='ADMIN'">
-                        <a id="nav-link" href="#!/admin">Admin</a>
-                    </li>
-                    <li ng-show="currentUser.role=='ADMIN' || currentUser.role=='SUPPLIER'">
-                        <a id="nav-link" href="#!/suppliers">Supplier</a>
-                    </li>
-                    <li ng-show="!currentUser">
-                        <a id="nav-link" class="modal-trigger" data-target="register-modal">Register</a>
-                    </li>
-                    <li ng-show="currentUser">
-                        <a id="nav-link" href="#!/cart">Cart</a>
-                    </li>
-                    <li ng-show="currentUser">
-                        <a id="nav-link" href="#!/orders">Orders</a>
-                    </li>
-                    <li ng-show="currentUser" ng-click="logout()">
-                        <a id="nav-link">Logout</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+    <div style="" class="">
+        <div class="navbar z-depth-2" ng-controller="navController as navCtrl">
+            <nav class="transparent z-depth-0">
+                <div class="nav-wrapper">
+                    <a id="nav-link" href="#!" class="brand-logo">The HanCo.</a>
+                    <ul class="right hide-on-med-and-down">
+                        <li>
+                            <a id="nav-link" href="#!/home">Home</a>
+                        </li>
+                        <li>
+                            <a id="nav-link" href="#!/products">Products</a>
+                        </li>
+                        <li>
+                            <a id="nav-link" class="dropdown-trigger" data-target="categoryDropdown">Categories
+                                <i class="material-icons right">arrow_drop_down</i>
+                            </a>
+                        </li>
+                        <li ng-show="currentUser.role=='ADMIN'">
+                            <a id="nav-link" href="#!/admin">Admin</a>
+                        </li>
+                        <li ng-show="currentUser.role=='ADMIN' || currentUser.role=='SUPPLIER'">
+                            <a id="nav-link" href="#!/suppliers">Supplier</a>
+                        </li>
+                        <li ng-show="!currentUser">
+                            <a id="nav-link" class="modal-trigger" data-target="register-modal">Register</a>
+                        </li>
+                        <li ng-show="currentUser">
+                            <a id="nav-link" href="#!/cart">Cart</a>
+                        </li>
+                        <li ng-show="currentUser">
+                            <a id="nav-link" href="#!/orders">Orders</a>
+                        </li>
+                        <li ng-show="!currentUser" ng-click="navCtrl.loginCard()">
+                            <a id="nav-link">Login</a>
+                        </li>
+                        <li ng-show="currentUser" ng-click="logout()">
+                            <a id="nav-link">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
 
+    </div>
     <!-- Dropdown Structure -->
     <ul id='categoryDropdown' class='dropdown-content'>
         <li>
-            <a href="#!/products/handicrafts">Handicrafts</a>
+            <a class="red-text darken-5" href="#!/products/handicrafts">Handicrafts</a>
         </li>
         <li>
-            <a href="#!/products/corporateGifts">Corporate Gifts</a>
+            <a class="red-text darken-5" href="#!/products/corporateGifts">Corporate Gifts</a>
         </li>
         <li>
-            <a href="#!/products/festivalGifts">Festival Gifts</a>
+            <a class="red-text darken-5" href="#!/products/festivalGifts">Festival Gifts</a>
         </li>
     </ul>
 

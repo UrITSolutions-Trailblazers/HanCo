@@ -60,7 +60,7 @@ app.controller('productController', ['$scope', '$rootScope', '$http', 'REST_URI'
                     me.productsLoader = false;
                     me.products = res.data.products;
                     me.count = res.data.count;
-                    let maxPage = me.count / 3;
+                    let maxPage = me.count / 24;
                     me.maxPage = Math.ceil(maxPage)
                     for (let index = 0; index < me.maxPage; index++) {
                         me.pages[index] = index + 1;

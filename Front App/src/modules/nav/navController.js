@@ -3,7 +3,11 @@ app.controller('navController', ['$scope', '$rootScope', '$cookies', '$http', 'R
 
         $rootScope.currentUser = $cookies.getObject('currentUser');
         $rootScope.imageUrl = 'http://localhost:8000';
-    
+        
+        $rootScope.scaleToggle = 'scale-out'
+
+        var me = this;
+
         $scope.$on('$routeChangeSuccess', function () {
 
             $http.get(REST_URI + '/user/category').then(
@@ -30,6 +34,11 @@ app.controller('navController', ['$scope', '$rootScope', '$cookies', '$http', 'R
         }
 
         $rootScope.categories = [];
+
+        me.loginCard = function(){
+            if($rootScope.scaleToggle === 'scale-out') $rootScope.scaleToggle = 'scale-in'
+            else $rootScope.scaleToggle = 'scale-out'
+        }
 
     }
 ])

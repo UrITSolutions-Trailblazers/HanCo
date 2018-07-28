@@ -86,7 +86,7 @@ router.post('/products', async (req, res) => {
     }
     console.log(filter);
     let data  = {};
-    data.products = await Product.find(filter).skip(3 * (page - 1)).limit(3);
+    data.products = await Product.find(filter).skip(3 * (page - 1)).limit(24);
     data.count = await Product.count(filter);
     console.log(data);
     res.send(data);
