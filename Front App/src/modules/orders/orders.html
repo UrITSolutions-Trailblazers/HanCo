@@ -6,7 +6,7 @@
                 <hr>
             </div>
         </div>
-        <div class="card hoverable" ng-repeat="order in orders">
+        <div class="card hoverable" ng-repeat="order in ordersCtrl.orders">
             <div class="card-content">
                 <div class="">
                     <div class="row">
@@ -15,12 +15,11 @@
                             <hr>
                             <br>
                             <br>
-                            <br>
                             <div class="row">
                                 <div class="col s1 m1 l1">
-                                    <i  ng-show="order.cartItem.isApproved" data-position="top" data-tooltip="Order confirmed" class="tooltipped center green-text darken-3 small material-icons">check</i>
-                                    <i  ng-show="!order.cartItem.isApproved" class="center grey-text darken-5 small material-icons">check</i>
-                                </div>  
+                                    <i ng-show="order.cartItem.isApproved" data-position="top" data-tooltip="Order confirmed" class="tooltipped center green-text darken-3 small material-icons">check</i>
+                                    <i ng-show="!order.cartItem.isApproved" class="center grey-text darken-5 small material-icons">check</i>
+                                </div>
                                 <div class="col s4 m4 l4">
                                     <div class="progress center" ng-show="order.cartItem.isPacked">
                                         <div class="determinate" style="width: 100%"></div>
@@ -49,7 +48,21 @@
                                         <i data-position="top" data-tooltip="Dispatched by {{order.courierName}} - {{order.trackingId}}" class="tooltipped green-text darken-5 small material-icons">local_shipping</i>
                                     </div>
                                 </div>
+
                             </div>
+                            <form ng-submit="ordersCtrl.rate($index)">
+                                <div class="input-field col s4">
+                                    <i class="material-icons prefix">star_border</i>
+                                    <input style="width: 100%" ng-model="order.cartItem.product.rating" max="5" min="1" type="number" class="validate" name="rating" id="rating-{{$index}}">
+                                    <label for="rating-{{$index}}">Rating</label>
+                                </div>
+                                <div class="input-field col s1"></div>
+                                <div class="input-field col s4">
+                                    <button type="submit" class="btn orange waves-effect waves-light">
+                                        <i class="material-icons">star_border</i>
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                         <div class="col s12 m4 l4">
                             <strong>{{order.address.name}}</strong>

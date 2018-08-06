@@ -3,6 +3,7 @@ app.controller('userController', ['$scope', '$rootScope', '$cookies', '$http', '
 
         $scope.user = {};
         $scope.isLoader = false;
+        $rootScope.isLoginLoader = false;
 
         $scope.register = function () {
             // console.log($scope.user)
@@ -32,6 +33,7 @@ app.controller('userController', ['$scope', '$rootScope', '$cookies', '$http', '
 
         $scope.login = function () {
             $scope.isLoader = true;
+            $rootScope.isLoginLoader = true;
             $http.post(REST_URI + '/user/login', $scope.user).then(
                 (res) => {
                     $rootScope.currentUser = res.data.user;
@@ -41,9 +43,12 @@ app.controller('userController', ['$scope', '$rootScope', '$cookies', '$http', '
                     M.toast({ html: 'Hi '+$rootScope.currentUser.firstName })
                     $scope.user = {};
                     $scope.isLoader = false;
+                    $rootScope.isLoginLoader = false;
+                    $('#loginModal').modal('close');
                 },
                 (err) => {
                     $scope.isLoader = false;
+                    $rootScope.isLoginLoader = false;
                     M.toast({ html: 'Wrong credentials.' })
                     $scope.user.password = '';
                     console.error(err);

@@ -72,5 +72,21 @@
             </div>
         </div>
     </div>
+</div>
 
-    
+<div class="container">
+    <button style="width: 100%;" class="hoverable btn red lighten-1 waves-effect waves-light">Our Heighlights</button>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col s12 m4 l4" ng-repeat="product in homeCtrl.products">
+            <div class="card-panel hoverable">
+                <img class="" data-caption="" height="210px" width="100%" src="{{imageUrl}}/{{product.images[0]}}">
+                <br>
+                <a style="width: 100%;" href="#!/product/{{product._id}}" class="btn orange darken-1 waves-effect waves-light">Details</a>
+            </div>
+        </div>
+    </div>
+</div>
+

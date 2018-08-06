@@ -70,25 +70,58 @@ router.post('/count', async (req, res) => {
 });
 
 router.post('/products', async (req, res) => {
+    
     const filter = req.body.filter;
+    const sort = req.body.sort;
+    console.log(sort);
     const page = req.body.page;
-    if (filter.name) {
+    if (filter && filter.name) {
         filter.name = { $regex: `^.*${filter.name}.*`, $options: "i" }
     }else{
         // console.log('No name filter')
         delete filter.name;
     }
 
-    if(filter.price) {
-        filter.price = {$lt : filter.price}
-    }else{
+    if(filter.maxPrice && filter.minPrice) {
+        filter.price = {$gte: filter.minPrice, $lte: filter.maxPrice}
+        delete filter.maxPrice;
+        delete filter.minPrice;
+    }else if(!filter.maxPrice && !filter.minPrice){
+        delete filter.maxPrice;
+        delete filter.minPrice;
         delete filter.price;
+    }else if(!filter.maxPrice){
+        filter.price = {$gte: filter.minPrice}
+        delete filter.maxPrice;
+        delete filter.minPrice;
+    }else if(!filter.minPrice){
+        filter.price = {$lte: filter.maxPrice}
+        delete filter.maxPrice;
+        delete filter.minPrice;
     }
-    console.log(filter);
+
+    const sortPrice = {};
+    const sortRating = {};
+    if (sort.price && sort.rating) {
+        if(sort.price === 'lowHigh') sortPrice.price = 1;
+        else sortPrice.price = -1;
+
+        sortRating.rating = -1;
+
+    }else if (sort.price) {
+        if(sort.price === 'lowHigh') sortPrice.price = 1;
+        else sortPrice.price = -1;
+    }else if(sort.rating){
+        sortRating.rating = -1;
+    }
     let data  = {};
-    data.products = await Product.find(filter).skip(3 * (page - 1)).limit(24);
+    console.log('Price Sort: ', sortPrice);
+    console.log('Rating Sort: ', sortRating);
+    data.products = await Product.find(filter).skip(3 * (page - 1))
+        .limit(24).sort(sortPrice);
+    data.products.sort(sortRating);
     data.count = await Product.count(filter);
-    console.log(data);
+    // console.log(data);
     res.send(data);
 });
 

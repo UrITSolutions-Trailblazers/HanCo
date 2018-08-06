@@ -1,147 +1,176 @@
-<div class="">
-    <div class="row">
-        <div class="col m3 l3">
-            <ul id="slide-out" class="sidenav sidenav-fixed my-side hoverable">
-                <li class="nav-wrapper">
-
-                </li>
-                <!-- <li>
-                    <button class="btn orange darken-2 hoverable" style="width: 80%;">Some menu</button>
-                </li>
-                <li>
-                    <button class="btn green darken-2 hoverable" style="width: 80%;">Some menu</button>
-                </li> -->
-                <li>
-                    <div class="divider"></div>
-                </li>
-                <!-- <li class="nav-wrapper">
-                    <a class="subheader">
-                        <i class=" material-icons">filter_list</i>Filters
-                    </a>
-
-                </li> -->
-                <li class="nav-wrapper">
-                    <button ng-click="productCtrl.filterProducts()" style="width: 80%;" class=" red btn lighten-2 waves-effect waves-light">
-                        Filter
-                        <i class="right material-icons">graphic_eq</i>
-                    </button>
-                </li>
-                <li>
-                    <div class="divider"></div>
-                </li>
-                <li class="nav-wrapper">
-                    <form>
-                        <div class="input-field">
-                            <input id="price-filter" ng-model="productCtrl.filter.price" type="text" required placeholder="Max Price">
-                            <label class="label-icon" for="price-filter">
-                                <i class="material-icons">&#8377;</i>
-                            </label>
+<div class="" style="padding-left: 6%; padding-right: 6%">
+    <div class="card hoverable">
+        <div class="card-content product-card">
+            <div class="card-title">
+                <div class="valign-wrapper row">
+                    <div class="col s12 m7 l7">
+                        Handicrafts
+                    </div>
+                    <form class="col s12 m5 l5" ng-submit="productCtrl.filterProducts()">
+                        <div class="input-field right" style="width: 100%">
+                            <input id="search" class="validate" ng-model="productCtrl.filter.name" type="search" placeholder="Search" ng-model="search">
+                            <label for="search"></label>
                         </div>
                     </form>
+                </div>
+            </div>
+            <hr>
+            <div class="row inner-card" style="min-height: 400px">
+                <div class="container" ng-show="productCtrl.productsLoader">
+                    <br>
+                    <br>
+                    <div class="progress">
+                        <div class="indeterminate"></div>
+                    </div>
+                </div>
+                <div class="col s12 m4 l4" style="padding: 2%" ng-repeat="product in productCtrl.products">
+                    <div class="card hoverable">
+                        <div class="card-image valign-wrapper" style="max-height: 260px; min-height: 260px">
+                            <img src="{{imageUrl}}/{{product.images[0]}}" style="object-fit: cover;" height="260px" class="responsive">
+                            <a class="btn-floating hoverable halfway-fab waves-effect waves-light red" ng-click="addToCart(product._id, product.supplier)">
+                                <i class="material-icons">shopping_cart</i>
+                            </a>
+                        </div>
+                        <div class="card-content">
+                            <div class="row valign-wrapper">
+                                <div class="col s10 m10 l10">
+                                    <h5 class="left">{{product.name}}</h5>
+                                </div>
+                                <div class="col s2 m2 l2">
+                                    <button ng-show="!product.wish" class="btn white right waves-effect waves-dark" ng-click="productCtrl.addToWishlist($index)">
+                                        <i class="material-icons red-text">turned_in_not</i>
+                                    </button>
+                                    <button ng-show="product.wish" class="btn white right waves-effect waves-dark">
+                                        <i class="material-icons red-text">turned_in</i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s7 m7 l7 left">
+                                    <a class="orange-text darken-7" ng-show="product.rating >= 1">
+                                        <i class="tiny material-icons">star_border</i>
+                                    </a>
+                                    <a class="orange-text darken-7" ng-show="product.rating >= 2">
+                                        <i class="tiny material-icons">star_border</i>
+                                    </a>
+                                    <a class="orange-text darken-7" ng-show="product.rating >= 3">
+                                        <i class="tiny material-icons">star_border</i>
+                                    </a>
+                                    <a class="orange-text darken-7" ng-show="product.rating >= 4">
+                                        <i class="tiny material-icons">star_border</i>
+                                    </a>
+                                    <a class="orange-text darken-7" ng-show="product.rating >= 5">
+                                        <i class="tiny material-icons">star_border</i>
+                                    </a>
+                                </div>
+                                <div class="col s5 m5 l5">
+                                    <p class="right">&#8377; {{product.price}}</p>
+                                </div>
+                            </div>
+                            <!-- <hr> -->
+                            <div style="width: 100%">
+                                <a style="width: 47%" href="#!/product/{{product._id}}" class="btn orange center waves-effect waves-light">
+                                    View
+                                </a>
+                                <a style="width: 50%" href="#!/product/{{product._id}}" class="btn orange center waves-effect waves-light">
+                                    Buy
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <ul class="pagination right-align">
+                <li class="waves-effect" ng-disabled="productCtrl.prev">
+                    <!--  class="disabled" -->
+                    <a ng-click="productCtrl.previousPage()">Prev
+                        <i class="material-icons left">chevron_left</i>
+                    </a>
+                </li>
+                <li ng-repeat="page in productCtrl.pages" ng-class="{active: productCtrl.currentPage == page}">
+                    <!-- orange actice -->
+                    <a>{{page}} </a>
+                </li>
+
+                <li class="waves-effect" ng-disabled="productCtrl.next">
+                    <a ng-click="productCtrl.nextPage()">Next
+                        <i class="material-icons right">chevron_right</i>
+                    </a>
                 </li>
             </ul>
         </div>
-        <div class="col s12 m9 l9">
-            <div class="card hoverable">
-                <div class="card-content product-card">
-                    <div class="card-title">
-                        <div class="row">
-                            <form ng-submit="productCtrl.filterProducts()">
-                                <div class="col s12 m4 l4">
-                                    Handicrafts
-                                </div>
-                                <div class="col s19 m6 l6 input-field">
-                                    <input id="search" class="validate" ng-model="productCtrl.filter.name" type="search" placeholder="Search" ng-model="search">
-                                    <label for="search"></label>
-                                </div>
-                                <div class="col s3 m2 l2">
-                                    <button class="btn orange waves-effect waves-light" type="submit">
-                                        <i class="material-icons center">search</i>
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row inner-card" style="min-height: 400px">
-                        <div class="container" ng-show="productCtrl.productsLoader">
-                            <br>
-                            <br>
-                            <div class="progress">
-                                <div class="indeterminate"></div>
-                            </div>
-                        </div>
-                        <div class="col s12 m4 l4" ng-repeat="product in productCtrl.products">
-                            <div class="card hoverable">
-                                <div class="card-image" style="max-height: 210px; min-height: 210px">
-                                    <img src="{{imageUrl}}/{{product.images[0]}}" height="210px" class="responsive">
-                                    <a class="btn-floating hoverable halfway-fab waves-effect waves-light red" ng-click="addToCart(product._id, product.supplier)">
-                                        <i class="material-icons">shopping_cart</i>
-                                    </a>
-                                </div>
-                                <div class="card-content">
-                                    <div class="row valign-wrapper">
-                                        <div class="col s12 m12 l12">
-                                            <h5>{{product.name}}</h5>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col s7 m7 l7 left">
-                                            <a class="orange-text darken-7">
-                                                <i class="tiny material-icons">star_border</i>
-                                            </a>
-                                            <a class="orange-text darken-7">
-                                                <i class="tiny material-icons">star_border</i>
-                                            </a>
-                                            <a class="orange-text darken-7">
-                                                <i class="tiny material-icons">star_border</i>
-                                            </a>
-                                            <a class="orange-text darken-7">
-                                                <i class="tiny material-icons">star_border</i>
-                                            </a>
-                                            <a class="orange-text darken-7">
-                                                <i class="tiny material-icons">star_border</i>
-                                            </a>
-                                        </div>
-                                        <div class="col s5 m5 l5">
-                                            <p class="right">&#8377; {{product.price}}</p>
-                                        </div>
-                                    </div>
-                                    <!-- <hr> -->
-                                    <div style="width: 100%">
-                                        <a style="width: 47%" href="#!/product/{{product._id}}" class="btn orange center waves-effect waves-light">
-                                            View
-                                        </a>
-                                        <a style="width: 50%" href="#!/product/{{product._id}}" class="btn orange center waves-effect waves-light">
-                                            Buy
-                                        </a>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <ul class="pagination">
-                        <li class="waves-effect" ng-disabled="productCtrl.prev">
-                            <!--  class="disabled" -->
-                            <a ng-click="productCtrl.previousPage()">
-                                <i class="material-icons">chevron_left</i>
-                            </a>
-                        </li>
-                        <li class="" ng-repeat="page in productCtrl.pages">
-                            <!-- orange actice -->
-                            <a>{{page}}</a>
-                        </li>
-
-                        <li class="waves-effect" ng-disabled="productCtrl.next">
-                            <a ng-click="productCtrl.nextPage()">
-                                <i class="material-icons">chevron_right</i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large waves-effect waves-dark white tooltipped sidenav-trigger" data-position="top" data-tooltip="Filter"
+        data-target="slide-out">
+        <i class="large material-icons black-text">filter_list</i>
+    </a>
+</div>
+
+<ul id="slide-out" class="sidenav hoverable">
+    <form ng-submit="productCtrl.filterProducts()">
+        <li class="nav-wrapper">
+
+        </li>
+
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li class="nav-wrapper">
+            <button type="submit" style="width: 80%;" class=" red btn lighten-2 waves-effect waves-light">
+                Filter
+                <i class="right material-icons">graphic_eq</i>
+            </button>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li class="nav-wrapper">
+            <a class="">PRICE FILTER</a>
+        </li>
+        <li class="nav-wrapper">
+            <div class="card hoverable">
+                <div class="">
+
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="Min" type="number" ng-model="productCtrl.filter.minPrice" class="validate">
+                            <label for="Min">Min</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="Max" type="number" ng-model="productCtrl.filter.maxPrice" class="validate">
+                            <label for="Max">Max</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="nav-wrapper">
+            <a class="">SORT BY</a>
+        </li>
+        <li class="nav-wrapper">
+            <div class="card-panel hoverable">
+                <label>
+                    <input class="with-gap" value="lowHigh" ng-model="productCtrl.sort.price" name="group1" type="radio" />
+                    <span>Low->High</span>
+                </label>
+                <label>
+                    <input class="with-gap" value="highLow" ng-model="productCtrl.sort.price" name="group1" type="radio" />
+                    <span>High->Low</span>
+                </label>
+            </div>
+        </li>
+        <li class="nav-wrapper">
+            <div class="card-panel hoverable">
+                <label>
+                    <input type="checkbox" ng-model="productCtrl.sort.rating"/>
+                    <span>Rating</span>
+                </label>
+            </div>
+        </li>
+    </form>
+</ul>

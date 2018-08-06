@@ -1,8 +1,3 @@
-.my-side{
-    top: 5rem;
-    max-width: 25%
-}
-
 .navbar{
     padding-left: 5%;
     padding-right: 5%;
@@ -12,29 +7,24 @@
 }
 
 body{
-    background-color: #ffffff;
+    background-color: #f0e7e7;
 }
 
 #nav-link{
     color: #ffffff
 }
 
-body{
+/* body{
     max-height: 100% !important ; 
     overflow-y: hidden !important ;
-}
+} */
 
-.product-card{
+/* .product-card{
     height: 32rem !important ;
     max-height: 32rem !important ; 
     overflow-y: scroll !important ;
-}
+} */
 
 .inner-card{
     min-height: 2rem
-}
-
-.input-field input[type=text]:focus {
-    border-bottom: 1px solid rgb(177, 50, 50);
-    box-shadow: 0 1px 0 0 rgb(177, 50, 50);
 }

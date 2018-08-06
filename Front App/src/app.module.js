@@ -4,7 +4,7 @@ var app = angular.module('hanCoApp', [
     'ngFileUpload'
 ]);
 
-app.constant('REST_URI', 'http://localhost:8000/hanCo');
+app.constant('REST_URI', 'http://thehanco.us.openode.io');
 
 app.factory('httpRequestInterceptor', function ($rootScope, $cookies) {
     return {

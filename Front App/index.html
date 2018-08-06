@@ -8,6 +8,18 @@
 
     <!-- Styling Part -->
 
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1 0 auto;
+        }
+    </style>
+
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
 
@@ -133,8 +145,7 @@
                         <label for="phone" data-error="Invalid">Phone</label>
                     </div>
                     <div class="input-field col s12 m6 l6">
-                        <input ng-show="!isLoader" ng-click="register()" type="submit" class="waves-effect waves-light btn orange" value="Register"
-                            class="validate">
+                        <button ng-show="!isLoader" ng-click="register()" type="submit" class="waves-effect waves-light btn orange">Register</button>
                         <div ng-show="isLoader" class="preloader-wrapper active">
                             <div class="spinner-layer spinner-red-only">
                                 <div class="circle-clipper left">
@@ -153,6 +164,76 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Structure -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content" ng-controller="userController as userCtrl">
+            <h4>Login</h4>
+            <form ng-submit="login()">
+                <div class="input-field col s12 l12">
+                    <input type="text" id="email" ng-model="user.email" class="validate">
+                    <label for="email">E-Mail</label>
+                </div>
+                <div class="input-field col s12 l12">
+                    <input type="password" id="password" ng-model="user.password" class="validate">
+                    <label for="password">Password</label>
+                </div>
+                <div class="input-field col s12 white-text">
+                    <button ng-show="!isLoginLoader" style="width: 100%" type="submit" class="btn orange darken-1 waves-effect waves-light" >Login</button>
+                    <div ng-show="isLoginLoader" class="preloader-wrapper small active">
+                        <div class="spinner-layer spinner-green-only">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="gap-patch">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="page-footer red lighten-1">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Footer Content</h5>
+                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                </div>
+                <!-- <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Links</h5>
+                        <ul>
+                            <li>
+                                <a class="grey-text text-lighten-3" href="#!">Link 1</a>
+                            </li>
+                            <li>
+                                <a class="grey-text text-lighten-3" href="#!">Link 2</a>
+                            </li>
+                            <li>
+                                <a class="grey-text text-lighten-3" href="#!">Link 3</a>
+                            </li>
+                            <li>
+                                <a class="grey-text text-lighten-3" href="#!">Link 4</a>
+                            </li>
+                        </ul>
+                    </div> -->
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2018
+                <strong>The HanCo.</strong>
+                <div class="grey-text text-lighten-4 right">Powered By
+                    <strong>UrITSolutions</strong>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="

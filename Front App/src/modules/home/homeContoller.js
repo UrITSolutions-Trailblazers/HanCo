@@ -4,6 +4,7 @@ app.controller('homeController', ['$scope', '$http', 'REST_URI',
         var me = this;
 
         me.products = [];
+        me.filter = {};
 
         $(document).ready(function () {
             $('.slider').slider({
@@ -12,6 +13,7 @@ app.controller('homeController', ['$scope', '$http', 'REST_URI',
                 interval: 3500,
                 height: 600
             });
+
         });
 
         getAllProducts()

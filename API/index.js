@@ -11,14 +11,15 @@ const suppliersRoute = require('./src/routes/src.routes.suppliers');
 const userProfileRoutes = require('./src/routes/src.routes.userProfile');
 const paymentRoutes = require('./src/routes/src.routes.payment')
 
-const port = 8000;
+const port = 80;
 
 try {
     mongoose.connect('mongodb://ds229790.mlab.com:29790/handi_db', {
         auth: {
             user: 'richard_admin@uritsolutions',
             password: 'jesus7734'
-        }
+        },
+        useNewUrlParser: true
     }, (error) => {
 
         if (error) {
@@ -42,7 +43,7 @@ var corsOptions = {
 }
 
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.static(__dirname + '/uploads/images'));
 app.use(express.json());
 app.use('/hanCo/user', userRoutes);

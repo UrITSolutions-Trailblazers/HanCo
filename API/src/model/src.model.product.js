@@ -41,6 +41,21 @@ const productSchema = new mongoose.Schema({
     supplier: {
         type: mongoose.Schema.Types.ObjectId,
         required: true
+    },
+    rating: {
+        type: Number,
+        required: false,
+        default: 0
+    },
+    totalRating: {
+        type: Number,
+        required: false,
+        default: 0
+    },
+    count:  {
+        type: Number,
+        required: false,
+        default: 0
     }
 });
 

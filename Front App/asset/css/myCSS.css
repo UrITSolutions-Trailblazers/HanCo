@@ -3,6 +3,7 @@ body{
     background-repeat:no-repeat;  
     background-size: 100% 35rem; */
 
+    background-color: #f0e7e7;
 }
 
 .navbar{
@@ -10,7 +11,7 @@ body{
     padding-right: 5%;
     border-bottom: #f26b43 3px solid;
 
-    background-color: #be5151;
+    background-color: #ef5350;
 }
 
 
